@@ -1,6 +1,8 @@
 package com.example.myapplication.DI
 
+import android.app.Application
 import com.example.myapplication.BaseApplication
+import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -10,7 +12,13 @@ import dagger.android.support.AndroidSupportInjectionModule
 
 )
 interface AppComponent : AndroidInjector<BaseApplication> {
-
+@Component.Builder
+interface Builder
+{
+    @BindsInstance
+    fun application(application : Application) : Builder
+    fun build() : AppComponent
+}
 
 
 }
