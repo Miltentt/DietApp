@@ -3,6 +3,7 @@ package com.example.myapplication.DI
 
 import android.app.Application
 import androidx.room.Room
+import com.example.myapplication.Repository.Repository
 import com.example.myapplication.Room.User_DAO
 import com.example.myapplication.Room.User_Database
 import dagger.Module
@@ -36,6 +37,9 @@ fun provideRoom(application: Application) : User_Database
 fun provideDao (userDatabase: User_Database) : User_DAO
 {
     return userDatabase.getUserDAO()
+}
+fun provideRepo(userDatabase: User_Database) : Repository {
+    return Repository(userDatabase.getUserDAO())
 }
 
 

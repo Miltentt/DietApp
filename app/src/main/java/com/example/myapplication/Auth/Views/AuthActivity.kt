@@ -2,27 +2,26 @@ package com.example.myapplication.Auth.Views
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.fragment.app.replace
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.example.myapplication.Auth.ViewModels.Auth_ViewModel
 import com.example.myapplication.Auth.ViewModels.ViewModelsProviderFactory
+import com.example.myapplication.R
 import dagger.android.support.DaggerAppCompatActivity
+import kotlinx.android.synthetic.main.content_main.*
 import javax.inject.Inject
 
 
 class AuthActivity : DaggerAppCompatActivity() {
 
- private lateinit var authViewmodel : Auth_ViewModel
-
-    @Inject
- lateinit var  viewmodelprovider : ViewModelsProviderFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-authViewmodel = ViewModelProviders.of(this, viewmodelprovider)[Auth_ViewModel::class.java]
-
-
-
+        setContentView(R.layout.content_main)
+supportFragmentManager.beginTransaction()
+    .replace(R.id.nav_host_fragment,New_User_Fragment())
+    .commit()
     }
 }
 

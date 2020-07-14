@@ -11,6 +11,6 @@ interface User_DAO {
     @Insert
     fun insertUser(vararg user:User)
 @Query("SELECT * FROM user WHERE id=:id")
-fun loadUser(id : Int)
+fun loadUser(id : Int) : User
 
 }

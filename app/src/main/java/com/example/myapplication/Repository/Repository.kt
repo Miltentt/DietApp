@@ -9,8 +9,9 @@ class Repository @Inject constructor(val userDao: User_DAO) {
 
 
     fun addUser( username : String,  password : String,  weight : Int,  height : Int,  age : Int) {
-userDao.insertUser(User(username,password,weight,height,age))
+userDao.insertUser(User(username = username,password = password,weight = weight,height = height,age = age))
 
     }
+
 
 }
