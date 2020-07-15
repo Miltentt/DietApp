@@ -1,4 +1,4 @@
-package com.example.myapplication.Auth.ViewModels
+package com.example.myapplication.DI
 
 
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 
-@Singleton
+
 class ViewModelsProviderFactory @Inject constructor(
     private val creators: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
