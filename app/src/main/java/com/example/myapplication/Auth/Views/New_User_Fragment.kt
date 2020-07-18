@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.myapplication.Auth.ViewModels.Auth_ViewModel
 import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.R
+
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_first.*
 import javax.inject.Inject
@@ -22,7 +23,7 @@ class New_User_Fragment : DaggerFragment()
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_first, container,false)
+        return inflater.inflate(R.layout.fragment_create_user, container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
