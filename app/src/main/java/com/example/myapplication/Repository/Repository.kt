@@ -2,11 +2,10 @@ package com.example.myapplication.Repository
 
 import com.example.myapplication.Model.User
 import com.example.myapplication.Room.User_DAO
-import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.functions.Action
-import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.Completable
+import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
+
 import java.lang.IllegalStateException
 import java.util.*
 import java.util.concurrent.Callable

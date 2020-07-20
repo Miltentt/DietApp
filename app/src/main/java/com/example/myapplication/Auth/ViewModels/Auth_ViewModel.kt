@@ -1,13 +1,18 @@
 package com.example.myapplication.Auth.ViewModels
 
 import android.database.Observable
+import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.Model.User
 import com.example.myapplication.Repository.Repository
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
-import io.reactivex.rxjava3.schedulers.Schedulers
+import io.reactivex.Scheduler
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+
+
+
 import javax.inject.Inject
 
 
@@ -22,6 +27,8 @@ class Auth_ViewModel  @Inject constructor(val repository: Repository) : ViewMode
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+
 
 
 }
