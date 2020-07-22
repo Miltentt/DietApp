@@ -11,7 +11,10 @@ data class User constructor(
                             val password : String,
                             val weight : Int,
                             val height : Int,
-                            val age : Int)
+                            val age : Int,
+                            val sex : String,
+                            val exercise : Double
+)
 {
 
 }

@@ -40,7 +40,7 @@ class Log_in_Fragment : DaggerFragment() {
 
     fun authenticateUser()
     {
-        Log.e("xd",username.text.toString())
+
      authViewmodel.loadUser(username.text.toString()).subscribe(object : SingleObserver<User>
      {
 

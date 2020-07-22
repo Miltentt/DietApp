@@ -2,6 +2,7 @@ package com.example.myapplication.DI
 
 import com.example.myapplication.Auth.Views.Log_in_Fragment
 import com.example.myapplication.Auth.Views.New_User_Fragment
+import com.example.myapplication.Main.View.Fragment_Menu
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,5 +14,7 @@ abstract class FragmentsBuilderModule {
 @ContributesAndroidInjector
 abstract fun log_in_fragment() : Log_in_Fragment
 
+    @ContributesAndroidInjector
+    abstract fun menu_fragment() : Fragment_Menu
 
 }

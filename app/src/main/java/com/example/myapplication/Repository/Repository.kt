@@ -15,7 +15,7 @@ class Repository @Inject constructor(val userDao: User_DAO) {
 
 
 
-    fun addUser( username : String,  password : String,  weight : Int,  height : Int,  age : Int) {
+    fun addUser( username : String,  password : String,  weight : Int,  height : Int,  age : Int, sex :String,exercise : Double) {
 Completable.fromAction({
 
     userDao.insertUser(
@@ -24,8 +24,9 @@ Completable.fromAction({
             password = password,
             weight = weight,
             height = height,
-            age = age
-        )
+            age = age,
+            sex=sex,
+        exercise = exercise)
     )
 })
     .subscribeOn(Schedulers.io())

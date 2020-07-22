@@ -60,7 +60,8 @@ class New_User_Fragment : DaggerFragment() {
                         create_password.text.toString(),
                         Integer.parseInt(weight.text.toString()),
                         Integer.parseInt(height.text.toString()),
-                        Integer.parseInt(age.text.toString())
+                        Integer.parseInt(age.text.toString()),
+                                spinner.selectedItem.toString()
                     )
                     activity?.supportFragmentManager?.popBackStackImmediate();
                 }
