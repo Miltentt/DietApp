@@ -61,7 +61,8 @@ class New_User_Fragment : DaggerFragment() {
                         Integer.parseInt(weight.text.toString()),
                         Integer.parseInt(height.text.toString()),
                         Integer.parseInt(age.text.toString()),
-                                spinner.selectedItem.toString()
+                                spinner.selectedItem.toString(),
+                    spinner2.selectedItem.toString()
                     )
                     activity?.supportFragmentManager?.popBackStackImmediate();
                 }

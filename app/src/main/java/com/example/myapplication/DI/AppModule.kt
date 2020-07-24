@@ -3,6 +3,7 @@ package com.example.myapplication.DI
 
 import android.app.Application
 import androidx.room.Room
+import com.example.myapplication.Main.Session_Manager
 import com.example.myapplication.Repository.Repository
 import com.example.myapplication.Room.User_DAO
 import com.example.myapplication.Room.User_Database
@@ -41,6 +42,9 @@ fun provideDao (userDatabase: User_Database) : User_DAO
 fun provideRepo(userDatabase: User_Database) : Repository {
     return Repository(userDatabase.getUserDAO())
 }
-
+fun provideSessionManager() : Session_Manager
+{
+    return Session_Manager()
+}
 
 }

@@ -4,6 +4,7 @@ import android.database.Observable
 import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.Main.Session_Manager
 import com.example.myapplication.Model.User
 import com.example.myapplication.Repository.Repository
 import io.reactivex.Scheduler
@@ -16,7 +17,8 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
-class Auth_ViewModel  @Inject constructor(val repository: Repository) : ViewModel() {
+class Auth_ViewModel  @Inject constructor(val repository: Repository, val sessionManager: Session_Manager) : ViewModel() {
+
 
     public fun addUser(username : String,  password : String,  weight : Int,  height : Int,  age : Int,sex : String,exercise : String) {
 var exerciseInt : Double
@@ -40,7 +42,10 @@ var exerciseInt : Double
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
-
+fun authenticateuser(user : User)
+{
+    sessionManager.authenticateUser(user)
+}
 
 
 

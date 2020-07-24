@@ -20,6 +20,9 @@ android:name=".BaseApplication"
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Main.View.MainActivity">
+
+        </activity>
     </application>
 
 </manifest>
