@@ -20,7 +20,7 @@ class AppModule  {
 @Provides
  fun provideRetrofitInstance() : Retrofit
     {
-        return  Retrofit.Builder().baseUrl("xd")
+        return  Retrofit.Builder().baseUrl("TO-DO")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

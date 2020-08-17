@@ -16,5 +16,4 @@ abstract class ActivityBuildersModule {
     @ContributesAndroidInjector(modules = [FragmentsBuilderModule::class,Main_ViewModelsModule::class])
     abstract fun ContributeMainActivity() : MainActivity
 
-
 }

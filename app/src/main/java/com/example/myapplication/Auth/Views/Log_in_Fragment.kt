@@ -65,7 +65,7 @@ val intent = Intent(context,MainActivity::class.java)
          }
 
          override fun onError(e: Throwable) {
-             Log.e("xd","no user")
+             Toast.makeText(context, "Wrong username or password", Toast.LENGTH_SHORT).show()
          }
 
      })
