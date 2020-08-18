@@ -6,7 +6,7 @@ import io.reactivex.Single
 import org.junit.Assert
 import org.junit.Test
 
-class NoteDAO_Test : User_Database_Test() {
+class UserDAO_Test : User_Database_Test() {
 
 
 
