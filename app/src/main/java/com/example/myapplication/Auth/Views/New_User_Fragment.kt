@@ -55,20 +55,29 @@ class New_User_Fragment : DaggerFragment() {
                 }
 
                 override fun onError(e: Throwable) {
-                    authViewmodel.addUser(
-                        create_username.text.toString(),
-                        create_password.text.toString(),
-                        Integer.parseInt(weight.text.toString()),
-                        Integer.parseInt(height.text.toString()),
-                        Integer.parseInt(age.text.toString()),
-                                spinner.selectedItem.toString(),
-                    spinner2.selectedItem.toString()
-                    )
-                    activity?.supportFragmentManager?.popBackStackImmediate();
-                }
+
+                       try {
+                           authViewmodel.addUser(
+                               create_username.text.toString(),
+                               create_password.text.toString(),
+                               Integer.parseInt(weight.text.toString()),
+                               Integer.parseInt(height.text.toString()),
+                               Integer.parseInt(age.text.toString()),
+                               spinner.selectedItem.toString(),
+                               spinner2.selectedItem.toString())
+                           activity?.supportFragmentManager?.popBackStackImmediate();
+                       }
+                       catch (e : Throwable)
+                       {
+                           Toast.makeText(context, "Fill all the fields correctly", Toast.LENGTH_SHORT).show()
+                       }
 
 
-            })
+
+                   }
+                })
+
+
+         }
 
     }
-}
