@@ -1,13 +1,9 @@
 package com.example.myapplication.Auth.ViewModels
 
-import android.database.Observable
-import android.util.Log
-import androidx.annotation.MainThread
 import androidx.lifecycle.ViewModel
 import com.example.myapplication.Main.Session_Manager
 import com.example.myapplication.Model.User
 import com.example.myapplication.Repository.Repository
-import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -29,7 +25,7 @@ var exerciseInt : Double
             "Moderate exercise (3–5 days per week)" -> exerciseInt=1.55
             "Heavy exercise (6–7 days per week)" ->  exerciseInt=1.725
             "Very heavy exercise (twice per day, extra heavy workouts)" ->exerciseInt=1.9
-            else -> exerciseInt=0.0
+            else -> throw IllegalArgumentException("invalid name")
         }
 
 

@@ -4,18 +4,12 @@ package com.example.myapplication.repository
 import com.example.myapplication.Model.User
 import com.example.myapplication.Repository.Repository
 import com.example.myapplication.Room.User_DAO
-import io.reactivex.Scheduler
-import io.reactivex.Single
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.schedulers.Schedulers
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
-import java.util.concurrent.Callable
 
 
 class Repository_Test {
