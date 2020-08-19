@@ -12,6 +12,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
@@ -20,8 +21,9 @@ class AppModule  {
 @Provides
  fun provideRetrofitInstance() : Retrofit
     {
-        return  Retrofit.Builder().baseUrl("TO-DO")
+        return  Retrofit.Builder().baseUrl("https://api.edamam.com/search")
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
