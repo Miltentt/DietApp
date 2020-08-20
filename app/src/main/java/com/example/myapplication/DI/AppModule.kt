@@ -3,8 +3,10 @@ package com.example.myapplication.DI
 
 import android.app.Application
 import androidx.room.Room
+
 import com.example.myapplication.Main.Session_Manager
 import com.example.myapplication.Repository.Repository
+import com.example.myapplication.Retrofit.Edamam_Api
 import com.example.myapplication.Room.User_DAO
 import com.example.myapplication.Room.User_Database
 import dagger.Module
@@ -21,12 +23,18 @@ class AppModule  {
 @Provides
  fun provideRetrofitInstance() : Retrofit
     {
-        return  Retrofit.Builder().baseUrl("https://api.edamam.com/search")
+        return  Retrofit.Builder().
+        baseUrl("https://api.edamam.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
     }
 
+    @Singleton
+    @Provides
+    fun provideApi(retrofit:Retrofit): Edamam_Api {
+        return retrofit.create(Edamam_Api::class.java)
+    }
 
 @Singleton
 @Provides
@@ -36,7 +44,6 @@ fun provideRoom(application: Application) : User_Database
 }
 @Singleton
 @Provides
-
 fun provideDao (userDatabase: User_Database) : User_DAO
 {
     return userDatabase.getUserDAO()
