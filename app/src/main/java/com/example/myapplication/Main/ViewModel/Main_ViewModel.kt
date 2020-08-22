@@ -34,8 +34,7 @@ class single : SingleObserver<Edamam_Response> {
 
     fun loadRecipe()
     {
-        recipeRepository.loadRecipes()
-            .subscribe({i-> Log.i("xd",i.to.toString())},{i->Log.i("xd","nothing")})
+
     }
 
 
