@@ -19,23 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 class AppModule  {
-@Singleton
-@Provides
- fun provideRetrofitInstance() : Retrofit
-    {
-        return  Retrofit.Builder().
-        baseUrl("https://api.edamam.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-    }
-
-    @Singleton
-    @Provides
-    fun provideApi(retrofit:Retrofit): Edamam_Api {
-        return retrofit.create(Edamam_Api::class.java)
-    }
-
+    
 @Singleton
 @Provides
 fun provideRoom(application: Application) : User_Database

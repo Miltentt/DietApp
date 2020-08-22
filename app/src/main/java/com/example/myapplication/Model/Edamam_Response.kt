@@ -1,4 +1,4 @@
-package com.example.myapplication.Model.Edamam_Response
+package com.example.myapplication.Model
 
 
 import com.google.gson.annotations.SerializedName
@@ -9,7 +9,7 @@ data class Edamam_Response(
     @SerializedName("from")
     val from: Int,
     @SerializedName("hits")
-    val hits: List<Hit>,
+    val hits: List<com.example.myapplication.Model.Edamam_Response.Hit>,
     @SerializedName("more")
     val more: Boolean,
     @SerializedName("q")
@@ -23,7 +23,7 @@ data class Edamam_Response(
         @SerializedName("bought")
         val bought: Boolean,
         @SerializedName("recipe")
-        val recipe: Recipe
+        val recipe: com.example.myapplication.Model.Edamam_Response.Hit.Recipe
     ) {
         data class Recipe(
             @SerializedName("calories")
@@ -33,7 +33,7 @@ data class Edamam_Response(
             @SerializedName("dietLabels")
             val dietLabels: List<String>,
             @SerializedName("digest")
-            val digest: List<Digest>,
+            val digest: List<com.example.myapplication.Model.Edamam_Response.Hit.Recipe.Digest>,
             @SerializedName("healthLabels")
             val healthLabels: List<String>,
             @SerializedName("image")
@@ -41,7 +41,7 @@ data class Edamam_Response(
             @SerializedName("ingredientLines")
             val ingredientLines: List<String>,
             @SerializedName("ingredients")
-            val ingredients: List<Ingredient>,
+            val ingredients: List<com.example.myapplication.Model.Edamam_Response.Hit.Recipe.Ingredient>,
             @SerializedName("label")
             val label: String,
             @SerializedName("shareAs")
@@ -49,9 +49,9 @@ data class Edamam_Response(
             @SerializedName("source")
             val source: String,
             @SerializedName("totalDaily")
-            val totalDaily: TotalDaily,
+            val totalDaily: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily,
             @SerializedName("totalNutrients")
-            val totalNutrients: TotalNutrients,
+            val totalNutrients: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients,
             @SerializedName("totalTime")
             val totalTime: Double,
             @SerializedName("totalWeight")
@@ -73,7 +73,7 @@ data class Edamam_Response(
                 @SerializedName("schemaOrgTag")
                 val schemaOrgTag: String,
                 @SerializedName("sub")
-                val sub: List<Sub>,
+                val sub: List<com.example.myapplication.Model.Edamam_Response.Hit.Recipe.Digest.Sub>,
                 @SerializedName("tag")
                 val tag: String,
                 @SerializedName("total")
@@ -110,55 +110,55 @@ data class Edamam_Response(
 
             data class TotalDaily(
                 @SerializedName("CA")
-                val cA: CA,
+                val cA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.CA,
                 @SerializedName("CHOCDF")
-                val cHOCDF: CHOCDF,
+                val cHOCDF: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.CHOCDF,
                 @SerializedName("CHOLE")
-                val cHOLE: CHOLE,
+                val cHOLE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.CHOLE,
                 @SerializedName("ENERC_KCAL")
-                val eNERCKCAL: ENERCKCAL,
+                val eNERCKCAL: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.ENERCKCAL,
                 @SerializedName("FASAT")
-                val fASAT: FASAT,
+                val fASAT: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.FASAT,
                 @SerializedName("FAT")
-                val fAT: FAT,
+                val fAT: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.FAT,
                 @SerializedName("FE")
-                val fE: FE,
+                val fE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.FE,
                 @SerializedName("FIBTG")
-                val fIBTG: FIBTG,
+                val fIBTG: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.FIBTG,
                 @SerializedName("FOLDFE")
-                val fOLDFE: FOLDFE,
+                val fOLDFE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.FOLDFE,
                 @SerializedName("K")
-                val k: K,
+                val k: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.K,
                 @SerializedName("MG")
-                val mG: MG,
+                val mG: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.MG,
                 @SerializedName("NA")
-                val nA: NA,
+                val nA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.NA,
                 @SerializedName("NIA")
-                val nIA: NIA,
+                val nIA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.NIA,
                 @SerializedName("P")
-                val p: P,
+                val p: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.P,
                 @SerializedName("PROCNT")
-                val pROCNT: PROCNT,
+                val pROCNT: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.PROCNT,
                 @SerializedName("RIBF")
-                val rIBF: RIBF,
+                val rIBF: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.RIBF,
                 @SerializedName("THIA")
-                val tHIA: THIA,
+                val tHIA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.THIA,
                 @SerializedName("TOCPHA")
-                val tOCPHA: TOCPHA,
+                val tOCPHA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.TOCPHA,
                 @SerializedName("VITA_RAE")
-                val vITARAE: VITARAE,
+                val vITARAE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.VITARAE,
                 @SerializedName("VITB12")
-                val vITB12: VITB12,
+                val vITB12: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.VITB12,
                 @SerializedName("VITB6A")
-                val vITB6A: VITB6A,
+                val vITB6A: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.VITB6A,
                 @SerializedName("VITC")
-                val vITC: VITC,
+                val vITC: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.VITC,
                 @SerializedName("VITD")
-                val vITD: VITD,
+                val vITD: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.VITD,
                 @SerializedName("VITK1")
-                val vITK1: VITK1,
+                val vITK1: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.VITK1,
                 @SerializedName("ZN")
-                val zN: ZN
+                val zN: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalDaily.ZN
             ) {
                 data class CA(
                     @SerializedName("label")
@@ -388,69 +388,69 @@ data class Edamam_Response(
 
             data class TotalNutrients(
                 @SerializedName("CA")
-                val cA: CA,
+                val cA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.CA,
                 @SerializedName("CHOCDF")
-                val cHOCDF: CHOCDF,
+                val cHOCDF: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.CHOCDF,
                 @SerializedName("CHOLE")
-                val cHOLE: CHOLE,
+                val cHOLE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.CHOLE,
                 @SerializedName("ENERC_KCAL")
-                val eNERCKCAL: ENERCKCAL,
+                val eNERCKCAL: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.ENERCKCAL,
                 @SerializedName("FAMS")
-                val fAMS: FAMS,
+                val fAMS: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FAMS,
                 @SerializedName("FAPU")
-                val fAPU: FAPU,
+                val fAPU: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FAPU,
                 @SerializedName("FASAT")
-                val fASAT: FASAT,
+                val fASAT: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FASAT,
                 @SerializedName("FAT")
-                val fAT: FAT,
+                val fAT: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FAT,
                 @SerializedName("FATRN")
-                val fATRN: FATRN,
+                val fATRN: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FATRN,
                 @SerializedName("FE")
-                val fE: FE,
+                val fE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FE,
                 @SerializedName("FIBTG")
-                val fIBTG: FIBTG,
+                val fIBTG: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FIBTG,
                 @SerializedName("FOLAC")
-                val fOLAC: FOLAC,
+                val fOLAC: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FOLAC,
                 @SerializedName("FOLDFE")
-                val fOLDFE: FOLDFE,
+                val fOLDFE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FOLDFE,
                 @SerializedName("FOLFD")
-                val fOLFD: FOLFD,
+                val fOLFD: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.FOLFD,
                 @SerializedName("K")
-                val k: K,
+                val k: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.K,
                 @SerializedName("MG")
-                val mG: MG,
+                val mG: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.MG,
                 @SerializedName("NA")
-                val nA: NA,
+                val nA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.NA,
                 @SerializedName("NIA")
-                val nIA: NIA,
+                val nIA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.NIA,
                 @SerializedName("P")
-                val p: P,
+                val p: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.P,
                 @SerializedName("PROCNT")
-                val pROCNT: PROCNT,
+                val pROCNT: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.PROCNT,
                 @SerializedName("RIBF")
-                val rIBF: RIBF,
+                val rIBF: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.RIBF,
                 @SerializedName("SUGAR")
-                val sUGAR: SUGAR,
+                val sUGAR: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.SUGAR,
                 @SerializedName("THIA")
-                val tHIA: THIA,
+                val tHIA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.THIA,
                 @SerializedName("TOCPHA")
-                val tOCPHA: TOCPHA,
+                val tOCPHA: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.TOCPHA,
                 @SerializedName("VITA_RAE")
-                val vITARAE: VITARAE,
+                val vITARAE: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.VITARAE,
                 @SerializedName("VITB12")
-                val vITB12: VITB12,
+                val vITB12: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.VITB12,
                 @SerializedName("VITB6A")
-                val vITB6A: VITB6A,
+                val vITB6A: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.VITB6A,
                 @SerializedName("VITC")
-                val vITC: VITC,
+                val vITC: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.VITC,
                 @SerializedName("VITD")
-                val vITD: VITD,
+                val vITD: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.VITD,
                 @SerializedName("VITK1")
-                val vITK1: VITK1,
+                val vITK1: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.VITK1,
                 @SerializedName("WATER")
-                val wATER: WATER,
+                val wATER: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.WATER,
                 @SerializedName("ZN")
-                val zN: ZN
+                val zN: com.example.myapplication.Model.Edamam_Response.Hit.Recipe.TotalNutrients.ZN
             ) {
                 data class CA(
                     @SerializedName("label")
