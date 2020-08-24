@@ -3,9 +3,11 @@ package com.example.myapplication.Main.View
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
@@ -32,13 +34,11 @@ class MainActivity : DaggerAppCompatActivity() {
         setSupportActionBar(toolbar)
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
-        appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.menu, R.id.choose_meal), drawerLayout)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-       val main_viewmodel : Main_ViewModel = ViewModelProviders.of(this, viewmodelprovider)[Main_ViewModel::class.java]
-        main_viewmodel.loadRecipe()
+        val navController = Navigation.findNavController(this,R.id.nav_host_fragment)
+
+
+        setupActonBar(navController,drawerLayout)
+        setupSideAction(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -47,8 +47,27 @@ class MainActivity : DaggerAppCompatActivity() {
         return true
     }
 
+
+
+    private fun setupActonBar(navcontroller : NavController, drawerLayout: DrawerLayout)
+    {
+        NavigationUI.setupActionBarWithNavController(this,navcontroller,drawerLayout)
+
+    }
+    private fun setupSideAction(navcontroller: NavController)
+    {
+        nav_view.let {
+            NavigationUI.setupWithNavController(it,navcontroller)
+        }
+    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
+        val navigated = NavigationUI.onNavDestinationSelected(item!!, navController)
+        return navigated || super.onOptionsItemSelected(item)
+    }
+
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return NavigationUI.navigateUp(
+            Navigation.findNavController(this, R.id.nav_host_fragment),drawer_layout)
     }
 }

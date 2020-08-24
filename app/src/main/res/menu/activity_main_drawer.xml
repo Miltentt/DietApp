@@ -9,7 +9,7 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Menu" />
         <item
-            android:id="@+id/choose_meal"
+            android:id="@+id/meal"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Choose Meal" />
 

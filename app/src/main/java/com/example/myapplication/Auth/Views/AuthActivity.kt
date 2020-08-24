@@ -6,7 +6,6 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.myapplication.R
 import dagger.android.support.DaggerAppCompatActivity
-import kotlinx.android.synthetic.main.content_main.*
 
 
 class AuthActivity : DaggerAppCompatActivity()

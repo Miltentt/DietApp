@@ -3,26 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/menu">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/menu"
         android:name="com.example.myapplication.Main.View.Fragment_Menu"
         android:label="Lol"
         tools:layout="@layout/fragment_food_schedule">
-
         <action
-            android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_meal" />
+            android:id="@+id/action_menu_to_meal"
+            app:destination="@id/meal"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/meal"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/nav_meal"
+        android:id="@+id/meal"
         android:name="com.example.myapplication.Main.View.Fragment_Meal"
         android:label="@string/home_second"
         tools:layout="@layout/fragment_choose_meal">
         <action
             android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
+            app:destination="@id/menu" />
 
         <argument
             android:name="myArg"
