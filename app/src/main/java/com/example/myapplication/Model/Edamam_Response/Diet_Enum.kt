@@ -7,5 +7,4 @@ enum class Diet_Enum (val diet :String){
     Low_Carb("low-carb"),
     Low_Fat("low-fat"),
     Low_Sodium("low-sodium")
-
 }

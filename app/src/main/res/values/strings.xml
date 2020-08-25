@@ -33,7 +33,7 @@
      </string-array>
 
     <string-array name="cuisine">
-        <item></item>
+        <item>All the cuisines</item>
         <item>American</item>
         <item>Asian</item>
         <item>British</item>
@@ -55,7 +55,7 @@
     </string-array>
 
     <string-array name="diet">
-        <item></item>
+        <item>No diet</item>
         <item>balanced</item>
         <item>high-fiber</item>
         <item>high-protein</item>

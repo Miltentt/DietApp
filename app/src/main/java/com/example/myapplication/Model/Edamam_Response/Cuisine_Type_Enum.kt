@@ -1,6 +1,6 @@
 package com.example.myapplication.Model.Edamam_Response
 
-enum class Cuisine_Type_Enum(val cousine : String) {
+enum class Cuisine_Type_Enum(val cousine : String?) {
     American("American"),
     Asian("Asian"),
     British("British"),
@@ -18,5 +18,5 @@ enum class Cuisine_Type_Enum(val cousine : String) {
     Middle_Eastern("Middle Eastern"),
     Nordic("Nordic"),
     South_American("South American"),
-    South_East_Asian("South East Asian"),
+    South_East_Asian("South East Asian")
 }

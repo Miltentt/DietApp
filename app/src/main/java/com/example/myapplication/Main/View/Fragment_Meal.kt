@@ -22,7 +22,7 @@ class Fragment_Meal @Inject constructor() : DaggerFragment() {
     lateinit var  viewmodelprovider : ViewModelsProviderFactory
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       meal_viewmodel  = ViewModelProviders.of(this, viewmodelprovider)[Meal_Recipe_SharedViewModel::class.java]
+       meal_viewmodel  = ViewModelProviders.of(requireActivity(), viewmodelprovider)[Meal_Recipe_SharedViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -34,6 +34,7 @@ class Fragment_Meal @Inject constructor() : DaggerFragment() {
     }
 fun next()
 {
+   meal_viewmodel.getRecipes(mealtype_spinner.selectedItem.toString(),cuisine_spinner.selectedItem.toString(),diet_spinner.selectedItem.toString())
     parentFragmentManager.beginTransaction()
         .replace(R.id.nav_host_fragment,Fragment_Recipes())
         .addToBackStack(null)

@@ -27,7 +27,7 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         meal_viewmodel =
-            ViewModelProviders.of(this, viewmodelprovider)[Meal_Recipe_SharedViewModel::class.java]
+            ViewModelProviders.of(requireActivity(), viewmodelprovider)[Meal_Recipe_SharedViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -52,10 +52,7 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     }
  fun initLiveData()
  {
-     var recipes : ArrayList<Edamam_Response.Hit.Recipe> = ArrayList()
-
-     meal_viewmodel.getRecipes("Breakfast","American",null).observe({lifecycle},{it-> recipes.add(it.hits.get(0).recipe)
-         recipe_adapter.updateAdapter(recipes)})
+     meal_viewmodel.returnRecipeLiveData().observe({lifecycle},{recipe_adapter.updateAdapter(meal_viewmodel.returnRecipeLiveData().value!!)})
  }
 
 

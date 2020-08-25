@@ -18,8 +18,8 @@ interface Edamam_Api {
         @Query("app_key") key: String,
         @Query("from") from: Int,
         @Query("to") to: Int?,
-        @Query("mealtype") mealtype: mealType_Enum,
-        @Query("cuisineType") cuisineTypeEnum: Cuisine_Type_Enum?,
-        @Query("diet") dietEnum: Diet_Enum?
+        @Query("mealType") mealtype: String,
+        @Query("cuisineType") cuisineType: String?,
+        @Query("diet") diet: String?
     ): Single<Edamam_Response>
 }
