@@ -1,4 +1,4 @@
-package com.example.myapplication.Model
+package com.example.myapplication.Model.Edamam_Response
 
 enum class Diet_Enum (val diet :String){
  Balanced("balanced"),

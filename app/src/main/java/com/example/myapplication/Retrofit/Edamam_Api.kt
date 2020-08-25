@@ -1,10 +1,10 @@
 package com.example.myapplication.Retrofit
 
 
-import com.example.myapplication.Model.Cuisine_Type_Enum
-import com.example.myapplication.Model.Diet_Enum
-import com.example.myapplication.Model.Edamam_Response
-import com.example.myapplication.Model.mealType_Enum
+import com.example.myapplication.Model.Edamam_Response.Cuisine_Type_Enum
+import com.example.myapplication.Model.Edamam_Response.Diet_Enum
+import com.example.myapplication.Model.Edamam_Response.Edamam_Response
+import com.example.myapplication.Model.Edamam_Response.mealType_Enum
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

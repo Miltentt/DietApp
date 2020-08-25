@@ -1,4 +1,4 @@
-package com.example.myapplication.Model
+package com.example.myapplication.Model.Edamam_Response
 
 enum class Cuisine_Type_Enum(val cousine : String) {
     American("American"),

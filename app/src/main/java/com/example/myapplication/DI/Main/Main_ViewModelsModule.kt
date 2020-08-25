@@ -6,6 +6,7 @@ import com.example.myapplication.Auth.ViewModels.Auth_ViewModel
 import com.example.myapplication.DI.ViewModelKey
 import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.Main.ViewModel.Main_ViewModel
+import com.example.myapplication.Main.ViewModel.Meal_Recipe_SharedViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -22,4 +23,11 @@ abstract class Main_ViewModelsModule {
     @SuppressWarnings("unused")
     @Binds
     abstract fun bind_ViewModel(ViewModelsProviderFactory: ViewModelsProviderFactory): ViewModelProvider.Factory
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(Meal_Recipe_SharedViewModel::class)
+    @SuppressWarnings("unused")
+    abstract fun bind_MealViewModel(mealViewmodel: Meal_Recipe_SharedViewModel) : ViewModel
+
 }

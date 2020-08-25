@@ -36,7 +36,6 @@ class MainActivity : DaggerAppCompatActivity() {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = Navigation.findNavController(this,R.id.nav_host_fragment)
 
-
         setupActonBar(navController,drawerLayout)
         setupSideAction(navController)
     }
