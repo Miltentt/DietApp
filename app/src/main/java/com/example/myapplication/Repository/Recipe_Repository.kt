@@ -19,8 +19,4 @@ class Recipe_Repository @Inject constructor(val edamamApi: Edamam_Api) {
          .observeOn(AndroidSchedulers.mainThread())
 
     }
-
-
-
-
 }

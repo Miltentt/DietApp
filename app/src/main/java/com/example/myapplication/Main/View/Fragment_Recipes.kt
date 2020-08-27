@@ -52,7 +52,7 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     }
  fun initLiveData()
  {
-     meal_viewmodel.returnRecipeLiveData().observe({lifecycle},{recipe_adapter.updateAdapter(meal_viewmodel.returnRecipeLiveData().value!!)})
+     meal_viewmodel.returnRecipeLiveData().observe({lifecycle},{recipe_adapter.updateAdapter(it)})
  }
 
 

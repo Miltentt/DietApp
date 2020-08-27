@@ -1,6 +1,9 @@
-package com.example.myapplication.Main
+package com.example.myapplication
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import com.example.myapplication.Model.User
+import com.example.myapplication.Util.Resource
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -10,6 +13,7 @@ import javax.inject.Singleton
 @Singleton
 class Session_Manager @Inject constructor() {
 
+    private var cacheduser = MediatorLiveData<Resource<User>>()
     private  var user : User? = null
     private var isAuthenticated = false
     private  var BLM : Double = 0.0
@@ -27,21 +31,23 @@ this.user = user
 isAuthenticated = true;
    }
 
-fun isUserAuthenticated() : Boolean
+fun authenticateUser(source : LiveData<Resource<User>>)
 {
-return isAuthenticated
+if(cacheduser != null)
+{
+    cacheduser.addSource(source,
+        {t->cacheduser.value=t })
+    cacheduser.removeSource(source)
 }
 
-    fun returnUser() : User?
+}
+    fun logout()
     {
-return user
+        cacheduser.value=(Resource.Logout())
     }
-fun logout()
+fun returnUser() : LiveData<Resource<User>>
 {
-    isAuthenticated=false;
-    user=null;
+    return cacheduser
 }
-
-
 
 }

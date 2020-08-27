@@ -25,7 +25,8 @@ fun loadUser(username : String) : Single<User>
     @Update
     fun updateUser(vararg  user: User) : Completable
 
-
+    @Query("SELECT * FROM User WHERE username LIKE :username AND password LIKE :password" )
+    fun authenticateUser(username : String,password : String) : Single<User>
 
 
 

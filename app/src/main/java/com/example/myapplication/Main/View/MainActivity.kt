@@ -14,7 +14,10 @@ import androidx.navigation.ui.*
 import com.example.myapplication.Auth.ViewModels.Auth_ViewModel
 import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.Main.ViewModel.Main_ViewModel
+import com.example.myapplication.Model.User
 import com.example.myapplication.R
+import com.example.myapplication.Session_Manager
+import com.example.myapplication.Util.Resource
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -23,10 +26,12 @@ import kotlinx.android.synthetic.main.activity_main1.*
 import javax.inject.Inject
 
 
-class MainActivity : DaggerAppCompatActivity() {
+class MainActivity :  DaggerAppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     @Inject
     lateinit var  viewmodelprovider : ViewModelsProviderFactory
+    @Inject
+    lateinit var sessionManager : Session_Manager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main1)
@@ -35,7 +40,7 @@ class MainActivity : DaggerAppCompatActivity() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = Navigation.findNavController(this,R.id.nav_host_fragment)
-
+        observeUserState()
         setupActonBar(navController,drawerLayout)
         setupSideAction(navController)
     }
@@ -62,6 +67,7 @@ class MainActivity : DaggerAppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         val navigated = NavigationUI.onNavDestinationSelected(item!!, navController)
+        if(item.itemId==R.id.logout) sessionManager.logout()
         return navigated || super.onOptionsItemSelected(item)
     }
 
@@ -69,4 +75,11 @@ class MainActivity : DaggerAppCompatActivity() {
         return NavigationUI.navigateUp(
             Navigation.findNavController(this, R.id.nav_host_fragment),drawer_layout)
     }
+
+    private fun observeUserState()
+    {
+        sessionManager.returnUser().observe({lifecycle},{t-> if(t is Resource.Logout) finish()})
+    }
+
+
 }

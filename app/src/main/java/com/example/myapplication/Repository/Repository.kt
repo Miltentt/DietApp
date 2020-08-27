@@ -4,6 +4,7 @@ import com.example.myapplication.Model.User
 import com.example.myapplication.Room.User_DAO
 import io.reactivex.Completable
 import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 import javax.inject.Inject
@@ -39,6 +40,12 @@ class Repository @Inject constructor(val userDao: User_DAO) {
     fun loadUser(username: String) : Single<User>
     {
       return userDao.loadUser(username)
+    }
+    fun authenticateUser(username: String,password: String) : Single<User>
+    {
+        return userDao.authenticateUser(username,password)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
     }
 
 

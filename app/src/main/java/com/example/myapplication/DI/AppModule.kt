@@ -4,18 +4,13 @@ package com.example.myapplication.DI
 import android.app.Application
 import androidx.room.Room
 
-import com.example.myapplication.Main.Session_Manager
+import com.example.myapplication.Session_Manager
 import com.example.myapplication.Repository.Repository
-import com.example.myapplication.Retrofit.Edamam_Api
 import com.example.myapplication.Room.User_DAO
 import com.example.myapplication.Room.User_Database
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
-
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 class AppModule  {

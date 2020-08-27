@@ -1,5 +1,6 @@
 package com.example.myapplication.Auth.Views
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.Main.View.MainActivity
 import com.example.myapplication.Model.User
 import com.example.myapplication.R
+import com.example.myapplication.Util.Resource
 import dagger.android.support.DaggerFragment
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
@@ -37,44 +39,38 @@ class Log_in_Fragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         authViewmodel = ViewModelProviders.of(this, viewmodelprovider)[Auth_ViewModel::class.java]
-        login.setOnClickListener({v->authenticateUser()})
-    }
-
-    fun authenticateUser()
-    {
-
-     authViewmodel.loadUser(username.text.toString()).subscribe(object : SingleObserver<User>
-     {
-
-
-         override fun onSuccess(t: User) {
-             if( password.text.toString().equals(t.password))
-             {
-                 authViewmodel.authenticateuser(t)
-val intent = Intent(context,MainActivity::class.java)
-                 startActivity(intent)
-             }
-            else
-             {
-                 Toast.makeText(context, "Wrong username or password", Toast.LENGTH_SHORT).show()
-             }
-         }
-
-         override fun onSubscribe(d: Disposable) {
-
-         }
-
-         override fun onError(e: Throwable) {
-             Toast.makeText(context, "Wrong username or password", Toast.LENGTH_SHORT).show()
-         }
-
-     })
-
-
-
+        login.setOnClickListener({authenticateUser()})
     }
 
 
+    fun authenticateUser() {
+
+        authViewmodel.authenticateUser(username.text.toString(), password.text.toString())
+        authViewmodel.observeUserState().observe({lifecycle},
+            {t-> when(t)
+            {
+                is Resource.Success -> startActivity(Intent(context,MainActivity::class.java))
+                is Resource.Error -> 
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    Toast.makeText(context, "Wrong username or password", Toast.LENGTH_SHORT).show()
+            }})
 
 
+    }
 }

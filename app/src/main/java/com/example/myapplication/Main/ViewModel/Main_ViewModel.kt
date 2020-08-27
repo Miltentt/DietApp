@@ -26,14 +26,6 @@ class single : SingleObserver<Edamam_Response> {
     }
 
 }
-    val singlee = single()
-
-    fun loadRecipe()
-    {
-
-    }
-
-
 
 
 }

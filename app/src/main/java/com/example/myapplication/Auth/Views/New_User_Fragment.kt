@@ -44,10 +44,8 @@ class New_User_Fragment : DaggerFragment() {
         authViewmodel.loadUser(create_username.text.toString())
             .subscribe(object : SingleObserver<User> {
 
-
                 override fun onSuccess(t: User) {
-                    Toast.makeText(context, "Username already extists", Toast.LENGTH_SHORT).show()
-
+                    Toast.makeText(context, "Username already exists", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onSubscribe(d: Disposable) {

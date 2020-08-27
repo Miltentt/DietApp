@@ -1,11 +1,9 @@
 package com.example.myapplication.repository.Auth.ViewModel
 
 import com.example.myapplication.Auth.ViewModels.Auth_ViewModel
-import com.example.myapplication.Main.Session_Manager
+import com.example.myapplication.Session_Manager
 import com.example.myapplication.Model.User
 import com.example.myapplication.Repository.Repository
-import io.reactivex.Single
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
