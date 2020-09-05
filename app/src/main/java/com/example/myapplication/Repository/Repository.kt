@@ -1,5 +1,6 @@
 package com.example.myapplication.Repository
 
+import android.util.Log
 import com.example.myapplication.Model.User
 import com.example.myapplication.Room.User_DAO
 import io.reactivex.Completable
@@ -19,7 +20,7 @@ class Repository @Inject constructor(val userDao: User_DAO) {
         exercise: Double
     )  {
 
-   Completable.fromAction({
+   Completable.fromAction{
 
     userDao.insertUser(
         User(
@@ -31,10 +32,11 @@ class Repository @Inject constructor(val userDao: User_DAO) {
             sex=sex,
         exercise = exercise)
     )
-})
+
+}
 
     .subscribeOn(Schedulers.io())
-      .subscribe()
+      .subscribe{ Log.i("x","aded")}
 
     }
     fun loadUser(username: String) : Single<User>

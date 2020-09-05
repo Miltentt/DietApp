@@ -23,7 +23,8 @@ import javax.inject.Inject
 class Auth_ViewModel  @Inject constructor(val repository: Repository, val sessionManager: Session_Manager) : ViewModel() {
 
     private var userlivedata = MutableLiveData<Resource<User>>()
-    public fun addUser(username : String,  password : String,  weight : Int,  height : Int,  age : Int,sex : String,exercise : String) {
+
+     fun addUser(username : String,  password : String,  weight : Int,  height : Int,  age : Int,sex : String,exercise : String) {
 var exerciseInt : Double
         when(exercise)
         {
@@ -36,6 +37,7 @@ var exerciseInt : Double
         }
 
         repository.addUser(username,  password ,  weight,  height ,  age, sex,exerciseInt)
+
     }
     fun authenticateUser(username: String,password: String)
     {

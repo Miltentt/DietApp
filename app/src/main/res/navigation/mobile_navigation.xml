@@ -15,6 +15,10 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/meal"
              />
+        <action
+            android:id="@+id/action_menu_to_fragment_EditUser"
+            app:destination="@id/user"
+            app:popUpTo="@id/user" />
     </fragment>
     <fragment
         android:id="@+id/meal"
@@ -31,5 +35,9 @@
         android:id="@+id/fragment_Recipes"
         android:name="com.example.myapplication.Main.View.Fragment_Recipes"
         android:label="Fragment_Recipes" />
+    <fragment
+        android:id="@+id/user"
+        android:name="com.example.myapplication.Main.View.Fragment_EditUser"
+        android:label="Fragment_EditUser" />
 
 </navigation>

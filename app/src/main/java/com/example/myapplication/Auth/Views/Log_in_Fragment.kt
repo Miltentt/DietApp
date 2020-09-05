@@ -39,37 +39,16 @@ class Log_in_Fragment : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         authViewmodel = ViewModelProviders.of(this, viewmodelprovider)[Auth_ViewModel::class.java]
+
         login.setOnClickListener({authenticateUser()})
+
     }
 
 
     fun authenticateUser() {
 
+
         authViewmodel.authenticateUser(username.text.toString(), password.text.toString())
-        authViewmodel.observeUserState().observe({lifecycle},
-            {t-> when(t)
-            {
-                is Resource.Success -> startActivity(Intent(context,MainActivity::class.java))
-                is Resource.Error -> 
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    Toast.makeText(context, "Wrong username or password", Toast.LENGTH_SHORT).show()
-            }})
 
 
     }

@@ -20,7 +20,7 @@ data class User constructor(
     override fun equals(other: Any?): Boolean {
        if(other == null)
           return false
-       if (other!!::class != User::class)
+       if (other::class != User::class)
          return  false
         val user = other as User
 
