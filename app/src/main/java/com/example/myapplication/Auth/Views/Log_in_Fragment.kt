@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_create_user.*
 import kotlinx.android.synthetic.main.fragment_log_in.*
 import javax.inject.Inject
 
-class Log_in_Fragment : DaggerFragment() {
+class Log_in_Fragment  : DaggerFragment() {
     @Inject
     lateinit var  viewmodelprovider : ViewModelsProviderFactory
     private lateinit var authViewmodel : Auth_ViewModel

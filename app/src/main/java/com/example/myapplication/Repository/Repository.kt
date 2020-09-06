@@ -36,7 +36,7 @@ class Repository @Inject constructor(val userDao: User_DAO) {
 }
 
     .subscribeOn(Schedulers.io())
-      .subscribe{ Log.i("x","aded")}
+      .subscribe{}
 
     }
     fun loadUser(username: String) : Single<User>
@@ -49,6 +49,12 @@ class Repository @Inject constructor(val userDao: User_DAO) {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
     }
+    fun updateUser(user : User) {
 
+        Completable.fromAction {
+            userDao.updateUser(user) }
+            .subscribeOn(Schedulers.io())
+            .subscribe{}
+    }
 
 }
