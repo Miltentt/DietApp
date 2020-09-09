@@ -14,7 +14,7 @@ class Recipe_Repository @Inject constructor(val edamamApi: Edamam_Api) {
 
     fun loadRecipes(mealtype : String, cuisine : String?, diet : String?): Single<Edamam_Response>
     {
-     return  edamamApi.searchRecipe("chicken","5f0d0995","4541a1a4b79b44352a7172ef1b6ff013",0,20,mealtype,cuisine,diet)
+     return  edamamApi.searchRecipe("chicken","5f0d0995","c2777bd93d26a4ce5bd17caee04026d0",0,10,null,null,null)
          .subscribeOn(Schedulers.io())
          .observeOn(AndroidSchedulers.mainThread())
 

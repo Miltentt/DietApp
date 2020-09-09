@@ -18,7 +18,7 @@ interface Edamam_Api {
         @Query("app_key") key: String,
         @Query("from") from: Int,
         @Query("to") to: Int?,
-        @Query("mealType") mealtype: String,
+        @Query("mealType") mealtype: String?,
         @Query("cuisineType") cuisineType: String?,
         @Query("diet") diet: String?
     ): Single<Edamam_Response>

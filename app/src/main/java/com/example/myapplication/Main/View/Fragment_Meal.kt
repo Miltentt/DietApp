@@ -11,6 +11,7 @@ import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.Main.ViewModel.Meal_Recipe_SharedViewModel
 
 import com.example.myapplication.R
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.activity_main1.*
 import kotlinx.android.synthetic.main.fragment_choose_meal.*
@@ -43,6 +44,8 @@ fun next()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         searchrecipes.setOnClickListener({v->next()})
+        enterTransition = MaterialFadeThrough().apply { duration = 1000}
+        exitTransition = MaterialFadeThrough().apply { duration = 1000 }
         super.onViewCreated(view, savedInstanceState)
     }
 

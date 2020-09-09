@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.DI.ViewModelsProviderFactory
-import com.example.myapplication.Main.Adapters.Recipes_Adapter
+import com.example.myapplication.Main.Adapters.Recipes_List_Adapter
 import com.example.myapplication.Main.ViewModel.Meal_Recipe_SharedViewModel
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
 import com.example.myapplication.R
@@ -22,7 +22,7 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     lateinit var meal_viewmodel : Meal_Recipe_SharedViewModel
     @Inject
     lateinit var  viewmodelprovider : ViewModelsProviderFactory
-    private  var recipe_adapter = Recipes_Adapter()
+    private  var recipe_adapter = Recipes_List_Adapter{recipe ->onClick(recipe)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +52,20 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     }
  fun initLiveData()
  {
-     meal_viewmodel.returnRecipeLiveData().observe({lifecycle},{recipe_adapter.updateAdapter(it)})
+     meal_viewmodel.returnRecipeLiveData().observe({lifecycle},{recipe_adapter.submitList(it)})
  }
 
+    private fun onClick(recipe : Edamam_Response.Hit.Recipe)
+    {
+        val bundle = Bundle()
+        bundle.putParcelable("recipe",recipe)
+        val fragment_recipe = Fragment_Recipe()
+        fragment_recipe.arguments = bundle
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment,fragment_recipe)
+            .addToBackStack(null)
+            .commit()
+
+    }
 
 }

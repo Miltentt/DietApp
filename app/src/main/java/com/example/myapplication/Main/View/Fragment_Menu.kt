@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplication.R
+import com.google.android.material.transition.*
+
 import dagger.android.support.DaggerFragment
 
 class Fragment_Menu : DaggerFragment() {
@@ -18,9 +20,16 @@ class Fragment_Menu : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
 
 
 
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = MaterialFadeThrough().apply { duration=1000 }
+        exitTransition = MaterialFadeThrough().apply { duration=1000 }
     }
 }

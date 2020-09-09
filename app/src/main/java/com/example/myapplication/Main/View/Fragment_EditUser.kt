@@ -14,6 +14,8 @@ import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.Main.ViewModel.EditUser_ViewModel
 import com.example.myapplication.Model.User
 import com.example.myapplication.R
+import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_create_user.*
 import kotlinx.android.synthetic.main.fragment_user.*
@@ -43,7 +45,8 @@ class Fragment_EditUser : DaggerFragment() {
         edit.setOnClickListener {view->setclickable(view); Log.i("xd","clicked")}
         edituserViewmodel = ViewModelProviders.of(this, viewmodelprovider)[EditUser_ViewModel::class.java]
         edituserViewmodel.loaduser().observe({lifecycle},{t->fillUser(t.data); confirm.setOnClickListener {updateUser(t.data)}})
-
+        enterTransition = MaterialFadeThrough().apply { duration = 1000}
+        exitTransition = MaterialFadeThrough().apply { duration = 1000 }
         super.onViewCreated(view, savedInstanceState)
 
     }

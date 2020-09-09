@@ -10,12 +10,14 @@ import com.example.myapplication.Model.Edamam_Response.Diet_Enum
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
 import com.example.myapplication.Model.Edamam_Response.mealType_Enum
 import com.example.myapplication.Repository.Recipe_Repository
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class Meal_Recipe_SharedViewModel @Inject constructor(val recipeRepository: Recipe_Repository) :ViewModel() {
 
     private var liveData = MutableLiveData<ArrayList<Edamam_Response.Hit.Recipe>>()
     private var recipelist = ArrayList<Edamam_Response.Hit.Recipe>()
+    private var disposables : CompositeDisposable = CompositeDisposable()
     val recipearray : (Edamam_Response) -> Unit = { it->
 
         for(x in 0 until it.hits.size)
@@ -48,8 +50,8 @@ class Meal_Recipe_SharedViewModel @Inject constructor(val recipeRepository: Reci
             diet_enum = Diet_Enum.valueOf(diet)
         }
 
-        recipeRepository.loadRecipes(mealType_Enum.valueOf(mealtype).name,null,null)
-            .subscribe({recipearray(it)},{t-> Log.i("xd","lol")})
+      disposables.add(recipeRepository.loadRecipes(mealType_Enum.valueOf(mealtype).name,null,null)
+            .subscribe({recipearray(it)},{Log.i("xd","didnt work")}))
 
     }
 
@@ -58,7 +60,8 @@ class Meal_Recipe_SharedViewModel @Inject constructor(val recipeRepository: Reci
         return liveData
     }
 
-
-
-
+    override fun onCleared() {
+        disposables.clear()
+        super.onCleared()
+    }
 }
