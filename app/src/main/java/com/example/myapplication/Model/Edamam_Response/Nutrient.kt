@@ -1,10 +1,13 @@
 package com.example.myapplication.Model.Edamam_Response
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-open class Nutrient( val label : String,  val quantity : Double,  val unit : String) : Parcelable {
+
+
+open class Nutrient(open var label : String, open var quantity : Double, open var unit : String="mg")  {
+
+   init {
+       quantity = "%.0f ".format(quantity).toDouble()
+   }
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

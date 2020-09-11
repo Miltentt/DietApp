@@ -4,10 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.Main.Adapters.Recipes_List_Adapter
@@ -40,17 +37,17 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler(view)
+        initRecycler()
         initLiveData()
     }
 
-    fun initRecycler(view : View) {
+    private fun initRecycler() {
         recipe_recycler.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = recipe_adapter
         }
     }
- fun initLiveData()
+ private fun initLiveData()
  {
      meal_viewmodel.returnRecipeLiveData().observe({lifecycle},{recipe_adapter.submitList(it)})
  }
@@ -59,10 +56,10 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     {
         val bundle = Bundle()
         bundle.putParcelable("recipe",recipe)
-        val fragment_recipe = Fragment_Recipe()
-        fragment_recipe.arguments = bundle
+        val fragmentRecipe = Fragment_Recipe()
+        fragmentRecipe.arguments = bundle
         parentFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment,fragment_recipe)
+            .replace(R.id.nav_host_fragment,fragmentRecipe)
             .addToBackStack(null)
             .commit()
 

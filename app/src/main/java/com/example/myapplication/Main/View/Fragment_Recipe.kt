@@ -1,11 +1,13 @@
 package com.example.myapplication.Main.View
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.IntegerRes
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Main.Adapters.Ingredients_Adapter
 import com.example.myapplication.Main.Adapters.Nutrients_Adapter
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
@@ -13,9 +15,11 @@ import com.example.myapplication.Model.Edamam_Response.Nutrient
 import com.example.myapplication.R
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_recipe.*
+import kotlinx.android.synthetic.main.recycler_ingredients.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Fragment_Recipe : DaggerFragment() {
-    var recipe : Edamam_Response.Hit.Recipe? = null
 private val ingredientsAdapter = Ingredients_Adapter()
     private val nutrientsAdapter = Nutrients_Adapter()
     override fun onCreateView(
@@ -28,11 +32,13 @@ private val ingredientsAdapter = Ingredients_Adapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-         recipe = this.arguments?.getParcelable<Edamam_Response.Hit.Recipe>("recipe")
+        val recipe = requireArguments().getParcelable<Edamam_Response.Hit.Recipe>("recipe")
         title.text = recipe?.label
         recipe_url.text = "Original Recipe: " + recipe?.url
         servings.text = ("Number of Servings: " + String.format("%.0f",recipe?.yield))
         calories.text = "Calories: " + String.format("%.0f",recipe?.calories)
+        recycler_ingredients.visibility=View.GONE
+        recycler_nutrients.visibility=View.GONE
         recycler_ingredients.apply {
             layoutManager=LinearLayoutManager(context)
             adapter=ingredientsAdapter
@@ -40,49 +46,65 @@ private val ingredientsAdapter = Ingredients_Adapter()
         ingredientsAdapter.submitList(recipe?.ingredients)
         recycler_nutrients.apply {
             adapter=nutrientsAdapter
-        layoutManager=LinearLayoutManager(context)}
-        nutrientsAdapter.submitList(populatelist())
+        layoutManager=LinearLayoutManager(context)
+        }
+        nutrientsAdapter.submitList(populatelist(recipe!!))
+        ingredients_button.setOnClickListener { showRecycler(ingredients_button,recycler_ingredients) }
+        nutrients_buton.setOnClickListener { showRecycler(nutrients_buton,recycler_nutrients) }
         super.onViewCreated(view, savedInstanceState)
 
     }
 
+    fun showRecycler(button: Button, recycler: RecyclerView)
+    {
+        if (recycler.visibility==View.GONE) {
+            button.text = "Hide"
+            recycler.visibility = View.VISIBLE
+        } else {
+            button.text = "Show"
+            recycler.visibility = View.GONE
+        }
+    }
 
 
-    private fun populatelist() : ArrayList<Nutrient>
+
+
+
+    private fun populatelist(recipe: Edamam_Response.Hit.Recipe) : ArrayList<Nutrient>
     {
         val list = ArrayList<Nutrient>()
-       list.add(recipe?.totalNutrients!!.cA)
-        list.add(recipe?.totalNutrients!!.cHOCDF)
-        list.add(recipe?.totalNutrients!!.cHOLE)
-        list.add(recipe?.totalNutrients!!.eNERCKCAL)
-        list.add(recipe?.totalNutrients!!.fAMS)
-        list.add(recipe?.totalNutrients!!.fAPU)
-        list.add(recipe?.totalNutrients!!.fASAT)
-        list.add(recipe?.totalNutrients!!.fAT)
-        list.add(recipe?.totalNutrients!!.fATRN)
-        list.add(recipe?.totalNutrients!!.fE)
-        list.add(recipe?.totalNutrients!!.fIBTG)
-        list.add(recipe?.totalNutrients!!.fOLAC)
-        list.add(recipe?.totalNutrients!!.fOLDFE)
-        list.add(recipe?.totalNutrients!!.fOLFD)
-        list.add(recipe?.totalNutrients!!.k)
-        list.add(recipe?.totalNutrients!!.mG)
-        list.add(recipe?.totalNutrients!!.nA)
-        list.add(recipe?.totalNutrients!!.nIA)
-        list.add(recipe?.totalNutrients!!.p)
-        list.add(recipe?.totalNutrients!!.pROCNT)
-        list.add(recipe?.totalNutrients!!.rIBF)
-        list.add(recipe?.totalNutrients!!.sUGAR)
-        list.add(recipe?.totalNutrients!!.tHIA)
-        list.add(recipe?.totalNutrients!!.tOCPHA)
-        list.add(recipe?.totalNutrients!!.vITARAE)
-        list.add(recipe?.totalNutrients!!.vITB12)
-        list.add(recipe?.totalNutrients!!.vITB6A)
-        list.add(recipe?.totalNutrients!!.vITC)
-        list.add(recipe?.totalNutrients!!.vITD)
-        list.add(recipe?.totalNutrients!!.vITK1)
-        list.add(recipe?.totalNutrients!!.wATER)
-        list.add(recipe?.totalNutrients!!.zN)
+       list.add(Nutrient(recipe.totalNutrients.cA.label, recipe.totalNutrients.cA.quantity,recipe.totalNutrients.cA.unit))
+        list.add(Nutrient(recipe.totalNutrients.cHOCDF.label,recipe.totalNutrients.cHOCDF.quantity,recipe.totalNutrients.cHOCDF.unit))
+        list.add(Nutrient(recipe.totalNutrients.cHOLE.label,recipe.totalNutrients.cHOLE.quantity,recipe.totalNutrients.cHOLE.unit))
+        list.add(Nutrient(recipe.totalNutrients.eNERCKCAL.label,recipe.totalNutrients.eNERCKCAL.quantity,recipe.totalNutrients.eNERCKCAL.unit))
+        list.add(Nutrient(recipe.totalNutrients.fAMS.label,recipe.totalNutrients.fAMS.quantity,recipe.totalNutrients.fAMS.unit))
+        list.add(Nutrient(recipe.totalNutrients.fAPU.label,recipe.totalNutrients.fAPU.quantity,recipe.totalNutrients.fAPU.unit))
+        list.add(Nutrient(recipe.totalNutrients.fASAT.label,recipe.totalNutrients.fASAT.quantity,recipe.totalNutrients.fASAT.unit))
+        list.add(Nutrient(recipe.totalNutrients.fAT.label,recipe.totalNutrients.fAT.quantity,recipe.totalNutrients.fAT.unit))
+        list.add(Nutrient(recipe.totalNutrients.fATRN.label,recipe.totalNutrients.fATRN.quantity,recipe.totalNutrients.fATRN.unit))
+        list.add(Nutrient(recipe.totalNutrients.fE.label,recipe.totalNutrients.fE.quantity,recipe.totalNutrients.fE.unit))
+        list.add(Nutrient(recipe.totalNutrients.fIBTG.label,recipe.totalNutrients.fIBTG.quantity,recipe.totalNutrients.fIBTG.unit))
+        list.add(Nutrient(recipe.totalNutrients.fOLAC.label,recipe.totalNutrients.fOLAC.quantity,recipe.totalNutrients.fOLAC.unit))
+        list.add(Nutrient(recipe.totalNutrients.fOLDFE.label,recipe.totalNutrients.fOLDFE.quantity,recipe.totalNutrients.fOLDFE.unit))
+        list.add(Nutrient(recipe.totalNutrients.fOLFD.label,recipe.totalNutrients.fOLFD.quantity,recipe.totalNutrients.fOLFD.unit))
+        list.add(Nutrient(recipe.totalNutrients.k.label,recipe.totalNutrients.k.quantity,recipe.totalNutrients.k.unit))
+        list.add(Nutrient(recipe.totalNutrients.mG.label,recipe.totalNutrients.mG.quantity,recipe.totalNutrients.mG.unit))
+        list.add(Nutrient(recipe.totalNutrients.nA.label,recipe.totalNutrients.nA.quantity,recipe.totalNutrients.nA.unit))
+        list.add(Nutrient(recipe.totalNutrients.nIA.label,recipe.totalNutrients.nIA.quantity,recipe.totalNutrients.nIA.unit))
+        list.add(Nutrient(recipe.totalNutrients.p.label,recipe.totalNutrients.p.quantity,recipe.totalNutrients.p.unit))
+        list.add(Nutrient(recipe.totalNutrients.pROCNT.label,recipe.totalNutrients.pROCNT.quantity,recipe.totalNutrients.pROCNT.unit))
+        list.add(Nutrient(recipe.totalNutrients.rIBF.label,recipe.totalNutrients.rIBF.quantity,recipe.totalNutrients.rIBF.unit))
+        list.add(Nutrient(recipe.totalNutrients.sUGAR.label,recipe.totalNutrients.sUGAR.quantity,recipe.totalNutrients.sUGAR.unit))
+        list.add(Nutrient(recipe.totalNutrients.tHIA.label,recipe.totalNutrients.tHIA.quantity,recipe.totalNutrients.tHIA.unit))
+        list.add(Nutrient(recipe.totalNutrients.tOCPHA.label,recipe.totalNutrients.tOCPHA.quantity,recipe.totalNutrients.tOCPHA.unit))
+        list.add(Nutrient(recipe.totalNutrients.vITARAE.label,recipe.totalNutrients.vITARAE.quantity,recipe.totalNutrients.vITARAE.unit))
+        list.add(Nutrient(recipe.totalNutrients.vITB12.label,recipe.totalNutrients.vITB12.quantity,recipe.totalNutrients.vITB12.unit))
+        list.add(Nutrient(recipe.totalNutrients.vITB6A.label,recipe.totalNutrients.vITB6A.quantity,recipe.totalNutrients.vITB6A.unit))
+        list.add(Nutrient(recipe.totalNutrients.vITC.label,recipe.totalNutrients.vITC.quantity,recipe.totalNutrients.vITC.unit))
+        list.add(Nutrient(recipe.totalNutrients.vITD.label,recipe.totalNutrients.vITD.quantity,recipe.totalNutrients.vITD.unit))
+        list.add(Nutrient(recipe.totalNutrients.vITK1.label,recipe.totalNutrients.vITK1.quantity,recipe.totalNutrients.vITK1.unit))
+        list.add(Nutrient(recipe.totalNutrients.wATER.label,recipe.totalNutrients.wATER.quantity,recipe.totalNutrients.wATER.unit))
+        list.add(Nutrient(recipe.totalNutrients.zN.label,recipe.totalNutrients.zN.quantity,recipe.totalNutrients.zN.unit))
         return list
     }
 

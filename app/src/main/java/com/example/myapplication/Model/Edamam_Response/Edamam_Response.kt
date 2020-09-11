@@ -252,23 +252,23 @@ data class Edamam_Response(
                 @Parcelize
                 data class CA(
                     @SerializedName("label")
-                   override val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                   override val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                    override val unit: String
-                ) : Nutrient(label, quantity, unit)
+                     val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class CHOCDF(
                     @SerializedName("label")
-                   override val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                   override val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                   override val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
@@ -279,326 +279,326 @@ data class Edamam_Response(
                      val quantity: Double,
                     @SerializedName("unit")
                      val unit: String
-                ) : Nutrient(label, quantity, unit)
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class ENERCKCAL(
                     @SerializedName("label")
-                   override val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FAMS(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                   override val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FAPU(
                     @SerializedName("label")
-                   override val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                   override val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FASAT(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FAT(
                     @SerializedName("label")
-                 override   val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                 override   val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FATRN(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FE(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FIBTG(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FOLAC(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                 override   val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FOLDFE(
                     @SerializedName("label")
-                 override   val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class FOLFD(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class K(
                     @SerializedName("label")
-                   override val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                   override val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class MG(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                   override val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class NA(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class NIA(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class P(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                   override val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class PROCNT(
                     @SerializedName("label")
-                   override val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                   override val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                   override val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class RIBF(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class SUGAR(
                     @SerializedName("label")
-                 override   val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                 override   val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class THIA(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class TOCPHA(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class VITARAE(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class VITB12(
                     @SerializedName("label")
-                   override val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class VITB6A(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class VITC(
                     @SerializedName("label")
-                 override   val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                 override   val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class VITD(
                     @SerializedName("label")
-                 override   val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                 override   val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class VITK1(
                     @SerializedName("label")
-                override    val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                override    val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class WATER(
                     @SerializedName("label")
-                  override  val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                   override val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                 override   val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
 
                 @SuppressLint("ParcelCreator")
                 @Parcelize
                 data class ZN(
                     @SerializedName("label")
-                 override   val label: String,
+                    val label: String,
                     @SerializedName("quantity")
-                  override  val quantity: Double,
+                    val quantity: Double,
                     @SerializedName("unit")
-                  override  val unit: String
-                ) : Nutrient(label, quantity, unit)
+                    val unit: String
+                ) : Parcelable
             }
         }
     }

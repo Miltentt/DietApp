@@ -1,5 +1,6 @@
 package com.example.myapplication.Main.Adapters
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,9 +33,9 @@ class Ingredients_Adapter() :
         RecyclerView.ViewHolder(itemView) {
         fun bind(ingredient: Edamam_Response.Hit.Recipe.Ingredient) = with(itemView) {
             val ingredients = itemView.ingredient
-            val amount = itemView.amount
             ingredients.text=ingredient.text
-            amount.text = ingredient.weight.toString()
+            amount.visibility=View.GONE
+            ingredients.gravity= Gravity.CENTER
 
 
         }

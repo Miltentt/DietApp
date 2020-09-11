@@ -1,5 +1,6 @@
 package com.example.myapplication.Main.Adapters
 
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +33,8 @@ class Nutrients_Adapter() :
         fun bind(nutrient: Nutrient) = with(itemView) {
             val ingredients = itemView.ingredient
             val amount = itemView.amount
-            ingredients.text=nutrient.label
-            amount.text=nutrient.quantity.toString() + nutrient.unit
+            ingredients.text=nutrient.label + " "
+            amount.text=nutrient.quantity.toString() + " " + nutrient.unit
         }
 
     }
