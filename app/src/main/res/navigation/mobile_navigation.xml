@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/menu"
-        android:name="com.example.myapplication.Main.View.Fragment_Menu"
+        android:name="com.example.myapplication.main.views.FragmentMenu"
         tools:layout="@layout/fragment_food_schedule">
         <action
             android:id="@+id/action_menu_to_meal"
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/meal"
-        android:name="com.example.myapplication.Main.View.Fragment_Meal"
+        android:name="com.example.myapplication.main.views.FragmentMeal"
         android:label="@string/home_second"
         tools:layout="@layout/fragment_choose_meal">
 
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_Recipes"
-        android:name="com.example.myapplication.Main.View.Fragment_Recipes"
+        android:name="com.example.myapplication.main.views.FragmentRecipes"
         android:label="Fragment_Recipes" >
         <action
             android:id="@+id/action_fragment_Recipes_to_fragment_Recipe"
@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/user"
-        android:name="com.example.myapplication.Main.View.FragmentEditUser"
+        android:name="com.example.myapplication.main.views.FragmentEditUser"
         android:label="Fragment_EditUser" >
         <action
             android:id="@+id/action_user_to_menu"
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_Recipe"
-        android:name="com.example.myapplication.Main.View.Fragment_Recipe"
+        android:name="com.example.myapplication.main.views.FragmentRecipe"
         android:label="Fragment_Recipe" />
 
 </navigation>

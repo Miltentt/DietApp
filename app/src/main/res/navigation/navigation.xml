@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.myapplication.Main.View.Fragment_Menu"
+        android:name="com.example.myapplication.main.views.FragmentMenu"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
     </fragment>
