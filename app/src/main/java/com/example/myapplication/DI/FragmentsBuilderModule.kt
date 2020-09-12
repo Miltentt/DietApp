@@ -21,7 +21,7 @@ abstract fun log_in_fragment() : Log_in_Fragment
     @ContributesAndroidInjector
     abstract fun recipes_fragment() : Fragment_Recipes
     @ContributesAndroidInjector
-    abstract fun user_fragment() : Fragment_EditUser
+    abstract fun user_fragment() : FragmentEditUser
     @ContributesAndroidInjector
     abstract fun recipe_fragment() : Fragment_Recipe
 

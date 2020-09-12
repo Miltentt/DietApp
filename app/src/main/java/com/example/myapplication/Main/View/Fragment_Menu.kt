@@ -4,19 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentFoodScheduleBinding
 import com.google.android.material.transition.*
 
 import dagger.android.support.DaggerFragment
 
 class Fragment_Menu : DaggerFragment() {
 
+    private lateinit var binding : FragmentFoodScheduleBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_food_schedule,container,false)
+        binding= DataBindingUtil.inflate(inflater,R.layout.fragment_food_schedule,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

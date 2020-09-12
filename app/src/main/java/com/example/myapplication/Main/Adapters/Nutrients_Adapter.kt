@@ -9,15 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
 import com.example.myapplication.Model.Edamam_Response.Nutrient
 import com.example.myapplication.R
+import com.example.myapplication.databinding.RecyclerIngredientsBinding
 import kotlinx.android.synthetic.main.recycler_ingredients.view.*
 
 class Nutrients_Adapter() :
     androidx.recyclerview.widget.ListAdapter<Nutrient, Nutrients_Adapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_ingredients, parent, false)
+        val inflater =
+            LayoutInflater.from(parent.context)
+        val binding = RecyclerIngredientsBinding.inflate(inflater)
 
-        return ViewHolder(itemView)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -26,10 +28,10 @@ class Nutrients_Adapter() :
 
 
     class ViewHolder(
-        itemView: View
+        val binding : RecyclerIngredientsBinding
 
     ) :
-        RecyclerView.ViewHolder(itemView) {
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(nutrient: Nutrient) = with(itemView) {
             val ingredients = itemView.ingredient
             val amount = itemView.amount

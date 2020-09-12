@@ -34,7 +34,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
+    buildFeatures {
+        dataBinding true
+    }
 }
 
 apply plugin: 'kotlin-kapt'
@@ -81,3 +83,4 @@ dependencies {
     testImplementation 'androidx.test.ext:truth:1.2.0'
     testImplementation 'com.google.truth:truth:0.44'
 }
+

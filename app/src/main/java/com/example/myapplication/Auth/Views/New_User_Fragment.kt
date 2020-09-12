@@ -1,47 +1,46 @@
 package com.example.myapplication.Auth.Views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.myapplication.Auth.ViewModels.Auth_ViewModel
 import com.example.myapplication.DI.ViewModelsProviderFactory
 import com.example.myapplication.Model.User
 import com.example.myapplication.R
-
+import com.example.myapplication.databinding.FragmentCreateUserBinding
 import dagger.android.support.DaggerFragment
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.fragment_create_user.*
-import kotlinx.android.synthetic.main.fragment_log_in.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class New_User_Fragment : DaggerFragment() {
     @Inject
     lateinit var viewmodelprovider: ViewModelsProviderFactory
     private lateinit var authViewmodel: Auth_ViewModel
+    private lateinit var binding: FragmentCreateUserBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_create_user, container, false)
+        binding= DataBindingUtil.inflate(inflater,R.layout.fragment_create_user, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         authViewmodel = ViewModelProviders.of(this, viewmodelprovider)[Auth_ViewModel::class.java]
-        button.setOnClickListener({ v -> createUser() })
+        binding.button.setOnClickListener { createUser() }
 
     }
 
-    fun createUser() {
-        authViewmodel.loadUser(create_username.text.toString())
+    private fun createUser() {
+        authViewmodel.loadUser(binding.createUsername.text.toString())
             .subscribe(object : SingleObserver<User> {
 
                 override fun onSuccess(t: User) {
@@ -56,13 +55,13 @@ class New_User_Fragment : DaggerFragment() {
 
                        try {
                            authViewmodel.addUser(
-                               create_username.text.toString(),
-                               create_password.text.toString(),
-                               Integer.parseInt(weight.text.toString()),
-                               Integer.parseInt(height.text.toString()),
-                               Integer.parseInt(age.text.toString()),
-                               spinner.selectedItem.toString(),
-                               spinner2.selectedItem.toString())
+                               binding.createUsername.text.toString(),
+                               binding.createPassword.text.toString(),
+                               Integer.parseInt(binding.weight.text.toString()),
+                               Integer.parseInt(binding.height.text.toString()),
+                               Integer.parseInt(binding.age.text.toString()),
+                               binding.spinner.selectedItem.toString(),
+                               binding.spinner2.selectedItem.toString())
                            activity?.supportFragmentManager?.popBackStackImmediate();
                        }
                        catch (e : Throwable)

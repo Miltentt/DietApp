@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.myapplication.DI.ViewModelsProviderFactory
@@ -11,8 +12,8 @@ import com.example.myapplication.Main.Adapters.Recipes_List_Adapter
 import com.example.myapplication.Main.ViewModel.Meal_Recipe_SharedViewModel
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentCradviewMealsBinding
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_cradview_meals.*
 import javax.inject.Inject
 
 class Fragment_Recipes @Inject constructor() : DaggerFragment() {
@@ -20,6 +21,7 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     @Inject
     lateinit var  viewmodelprovider : ViewModelsProviderFactory
     private  var recipe_adapter = Recipes_List_Adapter{recipe ->onClick(recipe)}
+    private lateinit var binding : FragmentCradviewMealsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,8 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_cradview_meals,container,false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_cradview_meals,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,7 +45,7 @@ class Fragment_Recipes @Inject constructor() : DaggerFragment() {
     }
 
     private fun initRecycler() {
-        recipe_recycler.apply {
+        binding.recipeRecycler.apply {
             layoutManager = GridLayoutManager(context, 3)
             adapter = recipe_adapter
         }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
 import com.example.myapplication.R
+import com.example.myapplication.databinding.RecyclerIngredientsBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_ingredients.view.*
 import kotlinx.android.synthetic.main.recycler_recipe.view.*
@@ -15,10 +16,11 @@ import kotlinx.android.synthetic.main.recycler_recipe.view.*
 class Ingredients_Adapter() :
     androidx.recyclerview.widget.ListAdapter<Edamam_Response.Hit.Recipe.Ingredient, Ingredients_Adapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_ingredients, parent, false)
+        val inflater =
+            LayoutInflater.from(parent.context)
+        val binding = RecyclerIngredientsBinding.inflate(inflater)
 
-        return ViewHolder(itemView)
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,10 +29,10 @@ class Ingredients_Adapter() :
 
 
     class ViewHolder(
-        itemView: View
+        val binding: RecyclerIngredientsBinding
 
     ) :
-        RecyclerView.ViewHolder(itemView) {
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(ingredient: Edamam_Response.Hit.Recipe.Ingredient) = with(itemView) {
             val ingredients = itemView.ingredient
             ingredients.text=ingredient.text

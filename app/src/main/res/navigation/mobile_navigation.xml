@@ -53,7 +53,7 @@
     </fragment>
     <fragment
         android:id="@+id/user"
-        android:name="com.example.myapplication.Main.View.Fragment_EditUser"
+        android:name="com.example.myapplication.Main.View.FragmentEditUser"
         android:label="Fragment_EditUser" >
         <action
             android:id="@+id/action_user_to_menu"

@@ -9,16 +9,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
 import com.example.myapplication.R
+import com.example.myapplication.databinding.RecyclerRecipeBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_recipe.view.*
 
 class Recipes_List_Adapter(private val onClick: (recipe: Edamam_Response.Hit.Recipe) -> Unit) :
     androidx.recyclerview.widget.ListAdapter<Edamam_Response.Hit.Recipe, Recipes_List_Adapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.recycler_recipe, parent, false)
+        val inflater =
+            LayoutInflater.from(parent.context)
+        val binding = RecyclerRecipeBinding.inflate(inflater)
 
-        return ViewHolder(itemView, onClick)
+        return ViewHolder(binding, onClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -27,14 +29,14 @@ class Recipes_List_Adapter(private val onClick: (recipe: Edamam_Response.Hit.Rec
 
 
     class ViewHolder(
-        itemView: View,
+        val binding : RecyclerRecipeBinding,
         private val onClick: (recipe: Edamam_Response.Hit.Recipe) -> Unit
     ) :
-        RecyclerView.ViewHolder(itemView) {
-        fun bind(recipe: Edamam_Response.Hit.Recipe) = with(itemView) {
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(recipe: Edamam_Response.Hit.Recipe) = with(binding.root) {
             val recipename = itemView.recipe_name
             val recipephoto = itemView.recipe_photo
-            recipename.setText(recipe.label)
+            recipename.text=recipe.label
             Picasso.get().load(recipe.image).into(recipephoto)
             setOnClickListener { onClick(recipe) }
 

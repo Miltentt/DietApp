@@ -1,11 +1,11 @@
 package com.example.myapplication.Main.View
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Main.Adapters.Ingredients_Adapter
@@ -13,44 +13,45 @@ import com.example.myapplication.Main.Adapters.Nutrients_Adapter
 import com.example.myapplication.Model.Edamam_Response.Edamam_Response
 import com.example.myapplication.Model.Edamam_Response.Nutrient
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentRecipeBinding
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.fragment_recipe.*
-import kotlinx.android.synthetic.main.recycler_ingredients.*
-import java.util.*
-import kotlin.collections.ArrayList
+
 
 class Fragment_Recipe : DaggerFragment() {
 private val ingredientsAdapter = Ingredients_Adapter()
     private val nutrientsAdapter = Nutrients_Adapter()
+    private lateinit var binding : FragmentRecipeBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_recipe,container,false)
+        binding=DataBindingUtil.inflate(inflater,R.layout.fragment_recipe,container,false)
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val recipe = requireArguments().getParcelable<Edamam_Response.Hit.Recipe>("recipe")
-        title.text = recipe?.label
-        recipe_url.text = "Original Recipe: " + recipe?.url
-        servings.text = ("Number of Servings: " + String.format("%.0f",recipe?.yield))
-        calories.text = "Calories: " + String.format("%.0f",recipe?.calories)
-        recycler_ingredients.visibility=View.GONE
-        recycler_nutrients.visibility=View.GONE
-        recycler_ingredients.apply {
+        binding.title.text = recipe?.label
+        binding.recipeUrl.text = "Original Recipe: " + recipe?.url
+        binding.servings.text = ("Number of Servings: " + String.format("%.0f",recipe?.yield))
+        binding.calories.text = "Calories: " + String.format("%.0f",recipe?.calories)
+        binding.recyclerIngredients.visibility=View.GONE
+        binding.recyclerNutrients.visibility=View.GONE
+        binding.recyclerIngredients.apply {
             layoutManager=LinearLayoutManager(context)
             adapter=ingredientsAdapter
         }
         ingredientsAdapter.submitList(recipe?.ingredients)
-        recycler_nutrients.apply {
+        binding.recyclerNutrients.apply {
             adapter=nutrientsAdapter
         layoutManager=LinearLayoutManager(context)
         }
         nutrientsAdapter.submitList(populatelist(recipe!!))
-        ingredients_button.setOnClickListener { showRecycler(ingredients_button,recycler_ingredients) }
-        nutrients_buton.setOnClickListener { showRecycler(nutrients_buton,recycler_nutrients) }
+        binding.ingredientsButton.setOnClickListener { showRecycler(binding.ingredientsButton,binding.recyclerIngredients) }
+        binding.nutrientsButon.setOnClickListener { showRecycler(binding.nutrientsButon,binding.recyclerNutrients) }
         super.onViewCreated(view, savedInstanceState)
 
     }
