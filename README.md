@@ -17,4 +17,4 @@ Android app meant to help you creating a healthy, various and balanced food habi
 - Edamam REST Api
 
 ## Status
-App is in early stages of development, having implemented the Authorization module with user creation. Dagger is set up, ready to work on the main module. I am thinking about using Firebase for my user authentication as it currently is done locally with Room. The potential to expand app's funcionality is huge so right now I am working on what is mentioned in Introduction and will probably implement extra features in the future.
+I have the logic done for the recipe search done, I am waiting for Edamam people to upgrade my Api plan so I can have better set of options. I also have to work on making the layouts ptretty as right now it's pretty much working skeleton with no style to it. I am thinking about using Firebase for my user authentication as it currently is done locally with Room. The potential to expand app's funcionality is huge so right now I am working on what is mentioned in Introduction and will probably implement extra features in the future.
