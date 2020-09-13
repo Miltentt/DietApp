@@ -60,9 +60,9 @@ class FragmentEditUser : DaggerFragment() {
     private fun fillUser(user: User?) {
         binding.createUsername.setText(user?.username)
         binding.createPassword.setText(user?.password)
-        binding.age.setText(Integer.toString(user!!.age))
-        binding.height.setText(Integer.toString(user!!.height))
-        binding.weight.setText(Integer.toString(user!!.weight))
+        binding.age.setText(String.format("%d",user!!.age))
+        binding.height.setText(String.format("%d",user.height))
+        binding.weight.setText(String.format("%d",user.weight))
         binding.sex.setText(user.sex)
         binding.exercise.setText(edituserViewmodel.returnExercise(user.exercise))
     }

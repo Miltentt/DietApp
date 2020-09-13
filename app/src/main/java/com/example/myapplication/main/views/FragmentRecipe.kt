@@ -1,10 +1,13 @@
 package com.example.myapplication.main.views
 
 import android.os.Bundle
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +17,7 @@ import com.example.myapplication.models.edamamResponse.EdamamResponse
 import com.example.myapplication.models.edamamResponse.Nutrient
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRecipeBinding
+import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerFragment
 
 
@@ -34,7 +38,9 @@ class FragmentRecipe : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recipe = requireArguments().getParcelable<EdamamResponse.Hit.Recipe>("recipe")
         binding.title.text = recipe?.label
-        binding.recipeUrl.text = "Original Recipe: " + recipe?.url
+        binding.recipeUrl.movementMethod=LinkMovementMethod.getInstance()
+        val url = "<a href='" + recipe?.url +"'>" + "Original Recipe" +"</a>"
+        binding.recipeUrl.text = HtmlCompat.fromHtml(url,HtmlCompat.FROM_HTML_MODE_LEGACY)
         binding.servings.text = ("Number of Servings: " + String.format("%.0f", recipe?.yield))
         binding.calories.text = "Calories: " + String.format("%.0f", recipe?.calories)
         binding.recyclerIngredients.visibility = View.GONE
@@ -61,11 +67,11 @@ class FragmentRecipe : DaggerFragment() {
                 binding.recyclerNutrients
             )
         }
+        Picasso.get().load(recipe.image).into(binding.image)
         super.onViewCreated(view, savedInstanceState)
-
     }
 
-    fun showRecycler(button: Button, recycler: RecyclerView) {
+    private fun showRecycler(button: Button, recycler: RecyclerView) {
         if (recycler.visibility == View.GONE) {
             button.text = "Hide"
             recycler.visibility = View.VISIBLE
