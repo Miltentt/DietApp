@@ -77,9 +77,7 @@
             android:id="@+id/recycler_ingredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:layoutAnimation="@anim/layout_anim"/>/>
 
         <TextView
             android:id="@+id/textView18"
@@ -100,7 +98,7 @@
             android:id="@+id/recycler_nutrients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layoutAnimation="@anim/layout_anim"/>
     </LinearLayout>
 </ScrollView>
 </layout>

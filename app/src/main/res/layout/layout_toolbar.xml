@@ -7,4 +7,7 @@
     android:layout_gravity="center_horizontal"
     android:fitsSystemWindows="true"
     app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+    android:background="@color/primary"
+    app:titleTextColor="@color/white"
+    app:titleMarginStart="14dp"
     />

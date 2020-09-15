@@ -17,6 +17,7 @@
             app:launchSingleTop="false"
             app:popEnterAnim="@android:anim/slide_in_left"
             app:popExitAnim="@anim/fragment_open_exit"
+            app:popUpTo="@id/meal"
             app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_menu_to_fragment_EditUser"
@@ -50,6 +51,10 @@
         <action
             android:id="@+id/action_fragment_Recipes_to_fragment_Recipe"
             app:destination="@id/fragment_Recipe" />
+        <action
+            android:id="@+id/action_fragment_Recipes_to_meal"
+            app:destination="@id/meal"
+            app:popUpTo="@id/meal" />
     </fragment>
     <fragment
         android:id="@+id/user"
@@ -64,6 +69,11 @@
     <fragment
         android:id="@+id/fragment_Recipe"
         android:name="com.example.myapplication.main.views.FragmentRecipe"
-        android:label="Fragment_Recipe" />
+        android:label="Fragment_Recipe" >
+        <action
+            android:id="@+id/action_fragment_Recipe_to_fragment_Recipes"
+            app:destination="@id/fragment_Recipes"
+            app:popUpTo="@id/fragment_Recipes" />
+    </fragment>
 
 </navigation>

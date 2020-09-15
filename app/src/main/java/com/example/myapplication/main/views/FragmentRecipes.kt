@@ -1,9 +1,11 @@
 package com.example.myapplication.main.views
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,13 +22,14 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
     lateinit var meal_viewmodel : Meal_Recipe_SharedViewModel
     @Inject
     lateinit var  viewmodelprovider : ViewModelsProviderFactory
-    private  var recipe_adapter = RecipesListAdapter{ recipe ->onClick(recipe)}
+    private  var recipe_adapter = RecipesListAdapter{ recipe,image ->onClick(recipe,image)}
     private lateinit var binding : FragmentCradviewMealsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         meal_viewmodel =
             ViewModelProviders.of(requireActivity(), viewmodelprovider)[Meal_Recipe_SharedViewModel::class.java]
+
     }
 
     override fun onCreateView(
@@ -52,10 +55,14 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
     }
  private fun initLiveData()
  {
-     meal_viewmodel.returnRecipeLiveData().observe({lifecycle},{recipe_adapter.submitList(it)})
+     meal_viewmodel.returnRecipeLiveData().observe({lifecycle}, {
+         recipe_adapter.submitList(it)
+             binding.recipeRecycler.visibility=View.VISIBLE
+         binding.progress.visibility=View.GONE
+         })
  }
 
-    private fun onClick(recipe : EdamamResponse.Hit.Recipe)
+    private fun onClick(recipe : EdamamResponse.Hit.Recipe, image: ImageView)
     {
         val bundle = Bundle()
         bundle.putParcelable("recipe",recipe)
@@ -63,6 +70,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
         fragmentRecipe.arguments = bundle
         parentFragmentManager.beginTransaction()
             .replace(R.id.nav_host_fragment,fragmentRecipe)
+            .addSharedElement(image,recipe.label)
             .addToBackStack(null)
             .commit()
 

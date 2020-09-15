@@ -11,9 +11,11 @@
         android:id="@+id/card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp">
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp">
 
         <LinearLayout
+            android:elevation="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/recycler_shadow"
@@ -28,6 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/nav_header"
+                android:transitionName="recipe_shared"
+                android:layout_gravity="center"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -35,10 +39,9 @@
                 android:id="@+id/recipe_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:foregroundGravity="center"
-                android:gravity="center"
-                android:text="TextView"
+                android:maxLines="2"
+                android:minLines="2"
+                android:text=""
                 android:textSize="20sp" />
         </LinearLayout>
 

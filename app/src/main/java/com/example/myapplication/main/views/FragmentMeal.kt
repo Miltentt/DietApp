@@ -38,6 +38,7 @@ class FragmentMeal @Inject constructor() : DaggerFragment() {
 
     fun next() {
         mealViewmodel.getRecipes(
+            binding.query.text.toString(),
             binding.mealtypeSpinner.selectedItem.toString(),
             binding.cuisineSpinner.selectedItem.toString(),
             binding.dietSpinner.selectedItem.toString()

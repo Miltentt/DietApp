@@ -9,13 +9,13 @@ import javax.inject.Inject
 
 class RecipeRepository @Inject constructor(val edamamApi: EdamamApi) {
 
-    fun loadRecipes(mealtype: String, cuisine: String?, diet: String?): Single<EdamamResponse> {
+    fun loadRecipes(query: String, mealtype: String, cuisine: String?, diet: String?): Single<EdamamResponse> {
         return edamamApi.searchRecipe(
-            "chicken",
+            query,
             "5f0d0995",
             "c2777bd93d26a4ce5bd17caee04026d0",
             0,
-            10,
+            30,
             null,
             null,
             null

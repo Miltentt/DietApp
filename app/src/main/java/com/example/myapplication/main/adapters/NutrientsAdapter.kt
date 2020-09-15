@@ -1,21 +1,22 @@
 package com.example.myapplication.main.adapters
 
+import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.models.edamamResponse.Nutrient
-import com.example.myapplication.databinding.RecyclerIngredientsBinding
+import com.example.myapplication.R
 import kotlinx.android.synthetic.main.recycler_ingredients.view.*
 
 class NutrientsAdapter() :
     androidx.recyclerview.widget.ListAdapter<Nutrient, NutrientsAdapter.ViewHolder>(DIFF_CALLBACK) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater =
-            LayoutInflater.from(parent.context)
-        val binding = RecyclerIngredientsBinding.inflate(inflater)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.recycler_ingredients, parent, false)
 
-        return ViewHolder(binding)
+        return ViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -24,15 +25,15 @@ class NutrientsAdapter() :
 
 
     class ViewHolder(
-        val binding: RecyclerIngredientsBinding
+        itemView: View
 
     ) :
-        RecyclerView.ViewHolder(binding.root) {
+        RecyclerView.ViewHolder(itemView) {
         fun bind(nutrient: Nutrient) = with(itemView) {
             val ingredients = itemView.ingredient
             val amount = itemView.amount
-            ingredients.text = nutrient.label + " "
-            amount.text = nutrient.quantity.toString() + " " + nutrient.unit
+            ingredients.text=nutrient.label
+            amount.text=nutrient.quantity.toString() + " " + nutrient.unit
         }
 
     }

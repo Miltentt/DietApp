@@ -1,7 +1,6 @@
 package com.example.myapplication.main.views
 
 import android.os.Bundle
-import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +10,14 @@ import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionInflater
+import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentRecipeBinding
 import com.example.myapplication.main.adapters.IngredientsAdapter
 import com.example.myapplication.main.adapters.NutrientsAdapter
 import com.example.myapplication.models.edamamResponse.EdamamResponse
 import com.example.myapplication.models.edamamResponse.Nutrient
-import com.example.myapplication.R
-import com.example.myapplication.databinding.FragmentRecipeBinding
+import com.google.android.material.transition.MaterialContainerTransform
 import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerFragment
 
@@ -35,8 +36,16 @@ class FragmentRecipe : DaggerFragment() {
         return binding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+
+
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         val recipe = requireArguments().getParcelable<EdamamResponse.Hit.Recipe>("recipe")
+
         binding.title.text = recipe?.label
         binding.recipeUrl.movementMethod=LinkMovementMethod.getInstance()
         val url = "<a href='" + recipe?.url +"'>" + "Original Recipe" +"</a>"
@@ -46,13 +55,13 @@ class FragmentRecipe : DaggerFragment() {
         binding.recyclerIngredients.visibility = View.GONE
         binding.recyclerNutrients.visibility = View.GONE
         binding.recyclerIngredients.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(requireContext())
             adapter = ingredientsAdapter
         }
         ingredientsAdapter.submitList(recipe?.ingredients)
         binding.recyclerNutrients.apply {
             adapter = nutrientsAdapter
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(requireContext())
         }
         nutrientsAdapter.submitList(populatelist(recipe!!))
         binding.ingredientsButton.setOnClickListener {
@@ -141,8 +150,7 @@ class FragmentRecipe : DaggerFragment() {
             )
         )
         list.add(
-            Nutrient(
-                recipe.totalNutrients.fATRN.label,
+            Nutrient(recipe.totalNutrients.fATRN.label,
                 recipe.totalNutrients.fATRN.quantity,
                 recipe.totalNutrients.fATRN.unit
             )

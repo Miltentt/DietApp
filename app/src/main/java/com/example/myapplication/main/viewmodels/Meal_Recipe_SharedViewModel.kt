@@ -28,28 +28,28 @@ class Meal_Recipe_SharedViewModel @Inject constructor(val recipeRepository: Reci
     }
 
 
-    fun getRecipes(mealtype : String, cuisine : String,diet : String)
+    fun getRecipes(query: String, mealtype : String, cuisine : String,diet : String)
     {
-        var diet_enum : DietEnum?
-        var cuisine_enum : CuisineTypeEnum?
+        var dietEnum : DietEnum?
+        var cuisineEnum : CuisineTypeEnum?
         if(cuisine=="All the cuisines")
         {
-            cuisine_enum = null
+            cuisineEnum = null
         }
         else
         {
-            cuisine_enum= CuisineTypeEnum.valueOf(cuisine)
+            cuisineEnum= CuisineTypeEnum.valueOf(cuisine)
         }
         if(diet=="No diet")
         {
-            diet_enum = null
+            dietEnum = null
         }
         else
         {
-            diet_enum = DietEnum.valueOf(diet)
+            dietEnum = DietEnum.valueOf(diet)
         }
 
-      disposables.add(recipeRepository.loadRecipes(MealTypeEnum.valueOf(mealtype).name,null,null)
+      disposables.add(recipeRepository.loadRecipes(query,MealTypeEnum.valueOf(mealtype).name,null,null)
             .subscribe({recipearray(it)},{Log.i("xd","didnt work")}))
 
     }

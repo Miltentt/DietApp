@@ -11,15 +11,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="418dp"
-            android:layout_height="168dp"
-            android:scaleType="centerCrop"
+
+
+
+        <EditText
+            android:id="@+id/query"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:layout_marginTop="24dp"
+            android:hint="What are you looking for?"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/rukola" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="168dp"
+                android:background="@drawable/recycler_shadow"
+                android:backgroundTint="#FFFFFF"
+                android:elevation="5dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/rukola" />
 
         <TextView
             android:id="@+id/textView9"
@@ -28,9 +48,10 @@
             android:layout_marginTop="24dp"
             android:text="Choose your meal type"
             android:textSize="20sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            app:layout_constraintTop_toBottomOf="@+id/query" />
 
         <Spinner
             android:id="@+id/mealtype_spinner"
@@ -85,8 +106,9 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:elevation="30dp"
             android:text="Choose your meal"
-            android:textColor="@color/design_default_color_background"
+            android:textColor="@color/cardview_light_background"
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
             app:layout_constraintStart_toStartOf="parent" />

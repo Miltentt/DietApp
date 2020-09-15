@@ -2,6 +2,7 @@ package com.example.myapplication.main.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.models.edamamResponse.EdamamResponse
@@ -9,7 +10,7 @@ import com.example.myapplication.databinding.RecyclerRecipeBinding
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_recipe.view.*
 
-class RecipesListAdapter(private val onClick: (recipe: EdamamResponse.Hit.Recipe) -> Unit) :
+class RecipesListAdapter(private val onClick: (recipe: EdamamResponse.Hit.Recipe, image: ImageView) -> Unit) :
     androidx.recyclerview.widget.ListAdapter<EdamamResponse.Hit.Recipe, RecipesListAdapter.ViewHolder>(
         DIFF_CALLBACK
     ) {
@@ -28,15 +29,16 @@ class RecipesListAdapter(private val onClick: (recipe: EdamamResponse.Hit.Recipe
 
     class ViewHolder(
         val binding: RecyclerRecipeBinding,
-        private val onClick: (recipe: EdamamResponse.Hit.Recipe) -> Unit
+        private val onClick: (recipe: EdamamResponse.Hit.Recipe, image : ImageView) -> Unit
     ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(recipe: EdamamResponse.Hit.Recipe) = with(binding.root) {
-            val recipename = itemView.recipe_name
-            val recipephoto = itemView.recipe_photo
+            val recipename = recipe_name
+            val recipephoto = recipe_photo
             recipename.text = recipe.label
             Picasso.get().load(recipe.image).into(recipephoto)
-            setOnClickListener { onClick(recipe) }
+            recipephoto.transitionName=recipe.label
+            setOnClickListener { onClick(recipe,recipephoto) }
         }
     }
 
