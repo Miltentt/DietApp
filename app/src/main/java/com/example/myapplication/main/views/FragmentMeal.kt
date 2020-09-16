@@ -16,9 +16,11 @@ import javax.inject.Inject
 
 class FragmentMeal @Inject constructor() : DaggerFragment() {
     private lateinit var mealViewmodel: Meal_Recipe_SharedViewModel
+
     @Inject
     lateinit var viewmodelprovider: ViewModelsProviderFactory
     private lateinit var binding: FragmentChooseMealBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mealViewmodel = ViewModelProviders.of(
@@ -37,6 +39,8 @@ class FragmentMeal @Inject constructor() : DaggerFragment() {
     }
 
     fun next() {
+       val bundle = Bundle()
+        bundle.putString("mealType",binding.query.text.toString())
         mealViewmodel.getRecipes(
             binding.query.text.toString(),
             binding.mealtypeSpinner.selectedItem.toString(),
@@ -44,13 +48,13 @@ class FragmentMeal @Inject constructor() : DaggerFragment() {
             binding.dietSpinner.selectedItem.toString()
         )
         parentFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment, FragmentRecipes())
+            .replace(R.id.nav_host_fragment, FragmentRecipes().apply { arguments = bundle })
             .addToBackStack(null)
             .commit()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.searchrecipes.setOnClickListener{ next() }
+        binding.searchrecipes.setOnClickListener { next() }
         enterTransition = MaterialFadeThrough().apply { duration = 1000 }
         exitTransition = MaterialFadeThrough().apply { duration = 1000 }
         super.onViewCreated(view, savedInstanceState)

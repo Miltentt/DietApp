@@ -45,11 +45,12 @@ class FragmentRecipe : DaggerFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val recipe = requireArguments().getParcelable<EdamamResponse.Hit.Recipe>("recipe")
+        val mealtype = requireArguments().getString("mealType")
 
         binding.title.text = recipe?.label
-        binding.recipeUrl.movementMethod=LinkMovementMethod.getInstance()
-        val url = "<a href='" + recipe?.url +"'>" + "Original Recipe" +"</a>"
-        binding.recipeUrl.text = HtmlCompat.fromHtml(url,HtmlCompat.FROM_HTML_MODE_LEGACY)
+        binding.recipeUrl.movementMethod = LinkMovementMethod.getInstance()
+        val url = "<a href='" + recipe?.url + "'>" + "Original Recipe" + "</a>"
+        binding.recipeUrl.text = HtmlCompat.fromHtml(url, HtmlCompat.FROM_HTML_MODE_LEGACY)
         binding.servings.text = ("Number of Servings: " + String.format("%.0f", recipe?.yield))
         binding.calories.text = "Calories: " + String.format("%.0f", recipe?.calories)
         binding.recyclerIngredients.visibility = View.GONE
@@ -150,7 +151,8 @@ class FragmentRecipe : DaggerFragment() {
             )
         )
         list.add(
-            Nutrient(recipe.totalNutrients.fATRN.label,
+            Nutrient(
+                recipe.totalNutrients.fATRN.label,
                 recipe.totalNutrients.fATRN.quantity,
                 recipe.totalNutrients.fATRN.unit
             )
@@ -319,5 +321,9 @@ class FragmentRecipe : DaggerFragment() {
         return list
     }
 
+    fun addRecipe(recipe: EdamamResponse.Hit.Recipe, mealtype : String)
+    {
+
+    }
 
 }

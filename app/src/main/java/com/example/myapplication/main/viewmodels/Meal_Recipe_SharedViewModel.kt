@@ -49,7 +49,7 @@ class Meal_Recipe_SharedViewModel @Inject constructor(val recipeRepository: Reci
             dietEnum = DietEnum.valueOf(diet)
         }
 
-      disposables.add(recipeRepository.loadRecipes(query,MealTypeEnum.valueOf(mealtype).name,null,null)
+      disposables.add(recipeRepository.searchRecipes(query,MealTypeEnum.valueOf(mealtype).name,null,null)
             .subscribe({recipearray(it)},{Log.i("xd","didnt work")}))
 
     }

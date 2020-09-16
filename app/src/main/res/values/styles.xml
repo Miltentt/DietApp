@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">#6E6513</item>
+        <item name="colorPrimaryDark">#3C3703</item>
         <item name="colorAccent">#01B128</item>
         <item name="android:textViewStyle">@style/Widget.MaterialComponents.TextView</item>
         <item name="android:textColorTertiary">@color/tetriarytext</item>

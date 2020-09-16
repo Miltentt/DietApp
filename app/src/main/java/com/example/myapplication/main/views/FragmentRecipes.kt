@@ -24,6 +24,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
     lateinit var  viewmodelprovider : ViewModelsProviderFactory
     private  var recipe_adapter = RecipesListAdapter{ recipe,image ->onClick(recipe,image)}
     private lateinit var binding : FragmentCradviewMealsBinding
+    private var mealtype : String? =null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        mealtype=savedInstanceState?.getString("mealType")
         initRecycler()
         initLiveData()
     }
@@ -66,6 +68,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
     {
         val bundle = Bundle()
         bundle.putParcelable("recipe",recipe)
+        bundle.putString("mealType",mealtype)
         val fragmentRecipe = FragmentRecipe()
         fragmentRecipe.arguments = bundle
         parentFragmentManager.beginTransaction()

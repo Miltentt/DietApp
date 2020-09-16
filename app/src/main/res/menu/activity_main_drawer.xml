@@ -17,5 +17,11 @@
             android:id="@+id/user"
             android:icon="@drawable/user"
             android:title="User" />
+
+        <item
+            android:id="@+id/favourites"
+            android:icon="@drawable/user"
+            android:title="Favourites" />
+            />
     </group>
 </menu>

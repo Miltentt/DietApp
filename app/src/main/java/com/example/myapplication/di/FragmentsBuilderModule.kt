@@ -24,6 +24,8 @@ abstract fun logInFragment() : LogInFragment
     abstract fun userFragment() : FragmentEditUser
     @ContributesAndroidInjector
     abstract fun recipeFragment() : FragmentRecipe
+    @ContributesAndroidInjector
+    abstract fun favouritesFragment() : FragmentFavourites
 
 
 }
