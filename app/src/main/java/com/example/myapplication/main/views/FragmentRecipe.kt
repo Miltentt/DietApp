@@ -8,24 +8,33 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.TransitionInflater
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentRecipeBinding
+import com.example.myapplication.di.ViewModelsProviderFactory
 import com.example.myapplication.main.adapters.IngredientsAdapter
 import com.example.myapplication.main.adapters.NutrientsAdapter
+import com.example.myapplication.main.viewmodels.RecipeViewModel
+import com.example.myapplication.models.Recipe
 import com.example.myapplication.models.edamamResponse.EdamamResponse
 import com.example.myapplication.models.edamamResponse.Nutrient
-import com.google.android.material.transition.MaterialContainerTransform
 import com.squareup.picasso.Picasso
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 
 class FragmentRecipe : DaggerFragment() {
     private val ingredientsAdapter = IngredientsAdapter()
     private val nutrientsAdapter = NutrientsAdapter()
     private lateinit var binding: FragmentRecipeBinding
+    val list = ArrayList<Nutrient>()
+
+    @Inject
+    lateinit var viewmodelprovider: ViewModelsProviderFactory
+    private lateinit var recipeviewmodel: RecipeViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,6 +55,10 @@ class FragmentRecipe : DaggerFragment() {
 
         val recipe = requireArguments().getParcelable<EdamamResponse.Hit.Recipe>("recipe")
         val mealtype = requireArguments().getString("mealType")
+        recipeviewmodel = ViewModelProviders.of(
+            requireActivity(),
+            viewmodelprovider
+        )[RecipeViewModel::class.java]
 
         binding.title.text = recipe?.label
         binding.recipeUrl.movementMethod = LinkMovementMethod.getInstance()
@@ -78,6 +91,8 @@ class FragmentRecipe : DaggerFragment() {
             )
         }
         Picasso.get().load(recipe.image).into(binding.image)
+
+        binding.addrecipebutton.setOnClickListener{addRecipe(recipe,mealtype)}
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -93,7 +108,7 @@ class FragmentRecipe : DaggerFragment() {
 
 
     private fun populatelist(recipe: EdamamResponse.Hit.Recipe): ArrayList<Nutrient> {
-        val list = ArrayList<Nutrient>()
+
         list.add(
             Nutrient(
                 recipe.totalNutrients.cA.label,
@@ -321,9 +336,16 @@ class FragmentRecipe : DaggerFragment() {
         return list
     }
 
-    fun addRecipe(recipe: EdamamResponse.Hit.Recipe, mealtype : String)
-    {
-
+    fun addRecipe(recipe: EdamamResponse.Hit.Recipe, mealtype: String?) {
+        val ingredients = ArrayList<String>()
+        val nutrients = ArrayList<String>()
+        for(x in recipe.ingredients.listIterator()) {
+            ingredients.add(x.text)
+        }
+        for(x in list.iterator()) {
+            nutrients.add(x.label + " " + x.quantity.toString() + x.unit)
+        }
+        recipeviewmodel.insertRecipe(Recipe(ingredients = ingredients,nutrients = nutrients,url = recipe.url,calories = recipe.calories.toString(),servings = recipe.yield.toString(),mealType = "Lunch",label = recipe.label,photo = recipe.image))
     }
 
 }

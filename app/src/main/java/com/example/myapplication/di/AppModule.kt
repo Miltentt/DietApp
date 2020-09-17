@@ -13,26 +13,28 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class AppModule  {
-    
+class AppModule {
+
+    @Singleton
+    @Provides
+    fun provideRoom(application: Application): UserDatabase {
+        return Room.databaseBuilder(application, UserDatabase::class.java, "test").build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideDao(userDatabase: UserDatabase): UserDAO {
+        return userDatabase.getUserDAO()
+    }
+    @Singleton
+    @Provides
+    fun provideRepo(userDatabase: UserDatabase): Repository {
+        return Repository(userDatabase.getUserDAO())
+    }
 @Singleton
-@Provides
-fun provideRoom(application: Application) : UserDatabase
-{
-    return Room.databaseBuilder(application,UserDatabase::class.java,"test").build()
-}
-@Singleton
-@Provides
-fun provideDao (userDatabase: UserDatabase) : UserDAO
-{
-    return userDatabase.getUserDAO()
-}
-fun provideRepo(userDatabase: UserDatabase) : Repository {
-    return Repository(userDatabase.getUserDAO())
-}
-fun provideSessionManager() : SessionManager
-{
-    return SessionManager()
-}
+    @Provides
+    fun provideSessionManager(): SessionManager {
+        return SessionManager()
+    }
 
 }

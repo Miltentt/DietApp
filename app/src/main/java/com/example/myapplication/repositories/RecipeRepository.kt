@@ -1,9 +1,11 @@
 package com.example.myapplication.repositories
 
-import com.example.myapplication.models.RecipeMealType
+import android.annotation.SuppressLint
+import com.example.myapplication.models.Recipe
 import com.example.myapplication.models.edamamResponse.EdamamResponse
 import com.example.myapplication.retrofit.EdamamApi
 import com.example.myapplication.room.RecipeDAO
+import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -32,11 +34,19 @@ class RecipeRepository @Inject constructor(val edamamApi: EdamamApi, val recipeD
             .observeOn(AndroidSchedulers.mainThread())
 
     }
-    fun loadRecipes(mealtype: String) : Flowable<List<RecipeMealType>>
-    {
+
+    fun loadRecipes(mealtype: String): Flowable<List<Recipe>> {
         return recipeDAO.loadRecipes(mealtype)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    @SuppressLint("CheckResult")
+    fun insertRecipes(recipe: Recipe) {
+        Completable.fromAction { recipeDAO.insertRecipe(recipe) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
     }
 
 }

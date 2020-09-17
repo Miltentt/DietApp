@@ -4,9 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.di.ViewModelKey
 import com.example.myapplication.di.ViewModelsProviderFactory
-import com.example.myapplication.main.viewmodels.EditUserViewModel
-import com.example.myapplication.main.viewmodels.MainViewModel
-import com.example.myapplication.main.viewmodels.Meal_Recipe_SharedViewModel
+import com.example.myapplication.main.viewmodels.*
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -35,5 +33,18 @@ abstract class MainViewModelsModule {
     @ViewModelKey(EditUserViewModel::class)
     @SuppressWarnings("unused")
     abstract fun bindEditViewModel(mealViewmodel: EditUserViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(RecipeViewModel::class)
+    @SuppressWarnings("unused")
+    abstract fun bindRecipeViewModel(recipeViewModel: RecipeViewModel) : ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MenuViewModel::class)
+    @SuppressWarnings("unused")
+    abstract fun bindMenuViewModel(menuViewModel: MenuViewModel) : ViewModel
+
 
 }

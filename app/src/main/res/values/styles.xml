@@ -16,7 +16,7 @@
 
 
 
-    <style name="AppTheme.AppBarOverlay" parent="Theme.MaterialComponents.Light.DarkActionBar" />
+    <style name="AppTheme1" parent="Theme.MaterialComponents.Light.DarkActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="Theme.MaterialComponents.Light.DarkActionBar" />
 

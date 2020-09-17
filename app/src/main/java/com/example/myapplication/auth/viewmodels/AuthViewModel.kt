@@ -4,9 +4,9 @@ package com.example.myapplication.auth.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.SessionManager
 import com.example.myapplication.models.User
 import com.example.myapplication.repositories.Repository
-import com.example.myapplication.SessionManager
 import com.example.myapplication.util.Resource
 import io.reactivex.Single
 import io.reactivex.SingleObserver
@@ -53,6 +53,7 @@ class AuthViewModel @Inject constructor(
                 override fun onSuccess(t: User) {
                     userlivedata.value = Resource.Success(t)
                     sessionManager.authenticateUser(userlivedata)
+
                 }
 
                 override fun onSubscribe(d: Disposable) {
@@ -61,6 +62,7 @@ class AuthViewModel @Inject constructor(
                 override fun onError(e: Throwable) {
                     userlivedata.value = Resource.Error("User not found", null)
                     sessionManager.authenticateUser(userlivedata)
+
                 }
 
             }))

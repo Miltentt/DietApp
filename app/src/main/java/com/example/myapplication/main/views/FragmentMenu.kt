@@ -4,36 +4,73 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FragmentFoodScheduleBinding
-import com.google.android.material.transition.*
-
+import com.example.myapplication.di.ViewModelsProviderFactory
+import com.example.myapplication.main.adapters.MenuAdapter
+import com.example.myapplication.main.adapters.RecipesListAdapter
+import com.example.myapplication.main.viewmodels.MenuViewModel
+import com.example.myapplication.models.Recipe
+import com.example.myapplication.models.edamamResponse.EdamamResponse
+import com.google.android.material.transition.MaterialFadeThrough
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 class FragmentMenu : DaggerFragment() {
 
-    private lateinit var binding : FragmentFoodScheduleBinding
+    private lateinit var binding: FragmentFoodScheduleBinding
+
+    @Inject
+    lateinit var viewmodelprovider: ViewModelsProviderFactory
+    private lateinit var menuViewModel: MenuViewModel
+    private val menuAdapter = MenuAdapter { recipe, image -> onClick(recipe, image) }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= DataBindingUtil.inflate(inflater,R.layout.fragment_food_schedule,container,false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_food_schedule, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+        menuViewModel = ViewModelProviders.of(
+            requireActivity(),
+            viewmodelprovider
+        )[MenuViewModel::class.java]
+        binding.breakfastrecycler.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = menuAdapter
+        }
+        loadRecipes()
         super.onViewCreated(view, savedInstanceState)
-
 
 
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = MaterialFadeThrough().apply { duration=1000 }
-        exitTransition = MaterialFadeThrough().apply { duration=1000 }
+        enterTransition = MaterialFadeThrough().apply { duration = 1000 }
+        exitTransition = MaterialFadeThrough().apply { duration = 1000 }
     }
+
+    private fun onClick(recipe: Recipe, image: ImageView) {
+
+    }
+
+    private fun loadRecipes()
+    {
+
+        menuViewModel.returnRecipeLiveData("Lunch").observe({lifecycle},{menuAdapter.submitList(it)})
+
+    }
+
+
+
 }

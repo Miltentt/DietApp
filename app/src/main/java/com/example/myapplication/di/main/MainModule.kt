@@ -37,6 +37,7 @@ class MainModule {
     {
         return Room.databaseBuilder(application, RecipeDatabase::class.java,"recipes").build()
     }
+
     @Provides
     fun provideRecipesDAO(db: RecipeDatabase) : RecipeDAO
     {

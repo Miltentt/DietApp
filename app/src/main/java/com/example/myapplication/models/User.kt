@@ -26,4 +26,8 @@ data class User constructor(
 
         return user.username == username && user.password == password
     }
+
+    override fun hashCode(): Int {
+        return id
+    }
 }

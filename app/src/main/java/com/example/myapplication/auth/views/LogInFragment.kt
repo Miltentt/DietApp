@@ -1,6 +1,7 @@
 package com.example.myapplication.auth.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,6 @@ class LogInFragment : DaggerFragment() {
 
 
     private fun authenticateUser() {
-
 
         authViewmodel.authenticateUser(
             binding.username.text.toString(),
