@@ -44,6 +44,5 @@ class MainModule {
         return db.getRecipeDAO()
     }
 
-
 }
 

@@ -1,6 +1,7 @@
 package com.example.myapplication.repositories
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.example.myapplication.models.Recipe
 import com.example.myapplication.models.edamamResponse.EdamamResponse
 import com.example.myapplication.retrofit.EdamamApi
@@ -49,4 +50,17 @@ class RecipeRepository @Inject constructor(val edamamApi: EdamamApi, val recipeD
             .subscribe()
     }
 
+
+    fun loadFavourites(mealtype: String): Flowable<List<Recipe>> {
+        return recipeDAO.loadFavourites(mealtype)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+    fun deleteRecipe(label: String,boolean: Boolean=true)
+    {
+        Completable.fromAction { recipeDAO.deleteFavourite(label,boolean) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe()
+    }
 }

@@ -3,12 +3,26 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-    </data>
+
+    <data></data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/favouritesButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/scrollView2"
+            app:sparkbutton_activeImage="@drawable/baseline_favorite_black_18dp"
+            app:sparkbutton_iconSize="40dp"
+            app:sparkbutton_inActiveImage="@drawable/baseline_favorite_border_black_18dp"
+            app:sparkbutton_primaryColor="@color/primary"
+            app:sparkbutton_secondaryColor="@color/secondarytext"
+            android:elevation="8dp"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addrecipebutton"
@@ -23,103 +37,107 @@
             app:srcCompat="@android:drawable/ic_input_add" />
 
         <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".main.views.MainActivity"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp">
-
-
-
-
-        <ImageView
-            android:id="@+id/image"
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:contentDescription="TODO"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/nav_header" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="0"
-            android:text="kl;';l"
-            android:textSize="30sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                tools:context=".main.views.MainActivity">
 
-        <TextView
-            android:id="@+id/recipe_url"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="TextView"
-            android:visibility="visible" />
 
-        <TextView
-            android:id="@+id/servings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:contentDescription="TODO"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/nav_header" />
 
-        <TextView
-            android:id="@+id/calories"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0"
-            android:text="TextView" />
 
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="List of Ingredients"
-            android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:text="kl;';l"
+                    android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/ingredients_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Show" />
+                <TextView
+                    android:id="@+id/recipe_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="TextView"
+                    android:visibility="visible" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_ingredients"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layoutAnimation="@anim/layout_anim"/>/>
+                <TextView
+                    android:id="@+id/servings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
 
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="List of Nutrients"
-            android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/calories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="TextView" />
 
-        <Button
-            android:id="@+id/nutrients_buton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Show" />
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="List of Ingredients"
+                    android:textSize="20sp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_nutrients"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layoutAnimation="@anim/layout_anim"/>
+                <Button
+                    android:id="@+id/ingredients_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Show" /><![CDATA[
 
-    </LinearLayout>
-</ScrollView>
+                />
+
+                ]]>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_ingredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layoutAnimation="@anim/layout_anim" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="List of Nutrients"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/nutrients_buton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Show" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_nutrients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layoutAnimation="@anim/layout_anim" />
+
+            </LinearLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

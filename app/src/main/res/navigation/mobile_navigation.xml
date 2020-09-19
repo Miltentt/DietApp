@@ -28,6 +28,9 @@
             app:popExitAnim="@android:anim/slide_in_left"
             app:popUpTo="@id/user"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_menu_to_fragmentFavourites"
+            app:destination="@id/favourites" />
     </fragment>
     <fragment
         android:id="@+id/meal"
@@ -75,5 +78,9 @@
             app:destination="@id/fragment_Recipes"
             app:popUpTo="@id/fragment_Recipes" />
     </fragment>
+    <fragment
+        android:id="@+id/favourites"
+        android:name="com.example.myapplication.main.views.FragmentFavourites"
+        android:label="FragmentFavourites" />
 
 </navigation>

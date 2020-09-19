@@ -61,7 +61,16 @@ class FragmentMenu : DaggerFragment() {
     }
 
     private fun onClick(recipe: Recipe, image: ImageView) {
+        val bundle = Bundle()
 
+        bundle.putParcelable("recipe", recipe)
+        val fragmentRecipe = FragmentRecipe()
+        fragmentRecipe.arguments = bundle
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.nav_host_fragment, fragmentRecipe)
+            .addSharedElement(image, recipe.label)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun loadRecipes()

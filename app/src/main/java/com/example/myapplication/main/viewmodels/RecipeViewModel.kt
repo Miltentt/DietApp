@@ -13,4 +13,10 @@ class RecipeViewModel @Inject constructor(private val recipeRepository: RecipeRe
     {
         recipeRepository.insertRecipes(recipe)
     }
+
+    fun deleteRecipe(label: String,boolean: Boolean=true)
+    {
+        recipeRepository.deleteRecipe(label,boolean)
+    }
+
 }

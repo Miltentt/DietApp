@@ -32,7 +32,7 @@ class FragmentEditUser : DaggerFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.edit.setOnClickListener { setclickable(it); Log.i("xd", "clicked") }
+        binding.edit.setOnClickListener { setclickable(); Log.i("xd", "clicked") }
         edituserViewmodel =
             ViewModelProviders.of(this, viewmodelprovider)[EditUserViewModel::class.java]
         edituserViewmodel.loaduser().observe({ lifecycle },
@@ -44,7 +44,7 @@ class FragmentEditUser : DaggerFragment() {
     }
 
 
-    private fun setclickable(view: View) {
+    private fun setclickable() {
 
         binding.createPassword.isEnabled = true
         binding.height.isEnabled = true
@@ -60,9 +60,9 @@ class FragmentEditUser : DaggerFragment() {
     private fun fillUser(user: User?) {
         binding.createUsername.setText(user?.username)
         binding.createPassword.setText(user?.password)
-        binding.age.setText(String.format("%d",user!!.age))
-        binding.height.setText(String.format("%d",user.height))
-        binding.weight.setText(String.format("%d",user.weight))
+        binding.age.setText(String.format("%d", user!!.age))
+        binding.height.setText(String.format("%d", user.height))
+        binding.weight.setText(String.format("%d", user.weight))
         binding.sex.setText(user.sex)
         binding.exercise.setText(edituserViewmodel.returnExercise(user.exercise))
     }

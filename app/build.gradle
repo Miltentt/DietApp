@@ -82,5 +82,6 @@ dependencies {
     testImplementation 'androidx.test:core:1.2.0'
     testImplementation 'androidx.test.ext:truth:1.2.0'
     testImplementation 'com.google.truth:truth:0.44'
+    implementation 'com.github.varunest:sparkbutton:1.0.6'
 }
 

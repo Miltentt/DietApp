@@ -45,6 +45,10 @@ abstract class MainViewModelsModule {
     @ViewModelKey(MenuViewModel::class)
     @SuppressWarnings("unused")
     abstract fun bindMenuViewModel(menuViewModel: MenuViewModel) : ViewModel
-
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavouritesViewModel::class)
+    @SuppressWarnings("unused")
+    abstract fun bindFavouritesViewModel(favouritesViewModel: FavouritesViewModel) : ViewModel
 
 }
