@@ -34,6 +34,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mealtype = arguments?.getString("mealType")
         meal_viewmodel =
             ViewModelProviders.of(
                 requireActivity(),
@@ -54,7 +55,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mealtype = savedInstanceState?.getString("mealType")
+
         initRecycler()
         initLiveData()
     }
@@ -77,7 +78,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
     private fun onClick(recipe: EdamamResponse.Hit.Recipe, image: ImageView) {
         val bundle = Bundle()
         populateArray(recipe)
-        bundle.putParcelable("recipe", createRecipe(recipe))
+        bundle.putParcelable("recipe", createRecipe(recipe,mealtype!!))
         val fragmentRecipe = FragmentRecipe()
         fragmentRecipe.arguments = bundle
         parentFragmentManager.beginTransaction()
@@ -316,7 +317,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
         )
     }
 
-    private fun createRecipe(recipe: EdamamResponse.Hit.Recipe) : Recipe {
+    private fun createRecipe(recipe: EdamamResponse.Hit.Recipe,mealtype : String) : Recipe {
         for (x in recipe.ingredients.listIterator()) {
             ingredients.add(x.text)
         }
@@ -329,7 +330,7 @@ class FragmentRecipes @Inject constructor() : DaggerFragment() {
             url = recipe.url,
             calories = recipe.calories.toString(),
             servings = recipe.yield.toString(),
-            mealType = "Lunch",
+            mealType = mealtype,
             label = recipe.label,
             photo = recipe.image,
             favourite = false

@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity
 data class Recipe(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
+    var id: Int = 0,
     @TypeConverters(TypeConverter::class)
     val ingredients: List<String>,
     @TypeConverters(TypeConverter::class)

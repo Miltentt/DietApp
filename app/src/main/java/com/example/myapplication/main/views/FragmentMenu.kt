@@ -76,7 +76,7 @@ class FragmentMenu : DaggerFragment() {
     private fun loadRecipes()
     {
 
-        menuViewModel.returnRecipeLiveData("Lunch").observe({lifecycle},{menuAdapter.submitList(it)})
+        menuViewModel.returnRecipeLiveData("Breakfast").observe({lifecycle},{menuAdapter.submitList(it)})
 
     }
 

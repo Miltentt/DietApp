@@ -125,6 +125,7 @@ class FragmentRecipe : DaggerFragment() {
 
     private fun addFavourite() {
         recipe?.favourite = true
+        recipe!!.id+=1
         recipeviewmodel.insertRecipe(recipe!!)
     }
 

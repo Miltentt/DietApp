@@ -1,6 +1,7 @@
 package com.example.myapplication.main.views
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,8 @@ class FragmentMeal @Inject constructor() : DaggerFragment() {
 
     fun next() {
        val bundle = Bundle()
-        bundle.putString("mealType",binding.query.text.toString())
+        bundle.putString("mealType",binding.mealtypeSpinner.selectedItem.toString())
+
         mealViewmodel.getRecipes(
             binding.query.text.toString(),
             binding.mealtypeSpinner.selectedItem.toString(),

@@ -73,7 +73,7 @@ class FragmentFavourites : DaggerFragment() {
     private fun loadRecipes()
     {
 
-        favouritesViewModel.returnRecipeLiveData("Lunch").observe({lifecycle},{menuAdapter.submitList(it)})
+        favouritesViewModel.returnRecipeLiveData("Breakfast").observe({lifecycle},{menuAdapter.submitList(it)})
 
     }
 
